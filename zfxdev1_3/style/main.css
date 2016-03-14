@@ -10,7 +10,9 @@
 	background-color: #eee;
 	border: 1px solid #999;
 	position: relative;
-	overflow: auto;
+	overflow: hidden;
+	min-width: 580px;
+
 }
 
 .left-layout {
@@ -42,6 +44,27 @@
 	background-color: #fff;
 	border: 1px solid #999;
 	padding: 20px;
+	min-width: 120px;
+}
+
+h1 {
+	font-size: 28px;
+	margin-bottom: 28px;
+}
+
+h2 {
+	font-size: 22px;
+	margin-bottom: 22px;
+}
+
+h3 {
+	font-size: 16px;
+	margin-bottom: 16px;
+}
+
+p {
+	font-size: 14px;
+	padding-bottom: 14px;
 }
 
 .right-layout {
@@ -49,9 +72,11 @@
 	width: 120px;
 	background-color: #fff;
 	border: 1px solid #999;
+	padding-bottom: 20px;
 }
 
 .right-layout img {
 	margin: 20px;
+	margin-bottom: 0;
 	border: 1px solid #999;
 }
