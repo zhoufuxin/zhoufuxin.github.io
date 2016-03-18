@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, p {
+  line-height: 1.5em;
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.teamIntroduction {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #999;
+  background-color: #eee;
+}
+
+.teamFlag, .teamContents, .teamMembers {
+  border: 1px solid #999;
+  background-color: #fff;
+  float: left;
+}
+
+.teamMain {
+  float: left;
+  width: 100%;
+}
+
+.teamFlag {
+  margin-left: -100%;
+  width: 200px;
+}
+/*自动宽度*/
+.teamContents {
+  margin-left: 220px;
+  margin-right: 140px;
+  float: none;
+}
+
+.teamMembers {
+  width: 120px;
+  margin-left: -120px;
+}
+
+.teamFlag img {
+  float: left;
+  margin: 20px;
+  display: block;
+  width: 80px;
+  border: 1px solid #999;
+}
+
+.teamFlag span {
+  float: left;
+  display: block;
+  width: 60px;
+  margin: 20px 0;
+}
+
+.teamMembers ul {
+  list-style: none;
+}
+
+.teamMembers ul img {
+  display: block;
+  width: 80px;
+  margin: 20px auto 0;
+  border: 1px solid #999;
+}
+
+.teamMembers ul img:last-child {
+  margin-bottom: 20px;
+}

@@ -24,20 +24,23 @@ p {
   padding-bottom: 14px;
 }
 
-.main-layout {
-  margin: 20px;
-  padding: 20px;
-  background-color: #eee;
-  border: 1px solid #999;
+.main-layout .box {
+  float: left;
   position: relative;
-  min-width: 580px;
-}
-
-.left-layout {
-  position: absolute;
-  width: 200px;
   background-color: #fff;
   border: 1px solid #999;
+}
+
+.main-layout {
+  margin: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 242px;
+  padding-right: 202px;
+  background-color: #eee;
+  border: 1px solid #999;
+  min-width: 250px;
+  overflow: auto;
 }
 
 .left-layout img {
@@ -48,35 +51,34 @@ p {
 }
 
 .left-layout strong {
-  position: absolute;
-  left: 110px;
-  top: 20px;
   width: 80px;
   text-align: center;
 }
 
 .middle-layout {
-  margin: 0 142px 0 222px;
-  background-color: #fff;
-  border: 1px solid #999;
+  width: 100%;
   padding: 20px;
-  min-width: 120px;
+}
+
+.left-layout {
+  margin-left: -100%;
+  left: -264px;
+  width: 200px;
 }
 
 .right-layout {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  margin-right: -100%;
   width: 120px;
-  background-color: #fff;
-  border: 1px solid #999;
+  right: -18px;
   padding-bottom: 20px;
 }
 
+
 .right-layout img {
+  display: block;
   height: 80px;
   width: 80px;
-  margin: 19px;
+  margin: 20px;
   margin-bottom: 0;
   border: 1px solid #999;
 }

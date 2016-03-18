@@ -2,8 +2,8 @@
 <html lang="en">
 <head>    
   <meta charset="UTF-8">
-  <title>无法自适应父层高度的三列布局</title>
-  <link rel="stylesheet" href="style/main.css">
+  <title>圣杯布局</title>
+  <link rel="stylesheet" href="style/main2.css">
 </head>
 <body>
   <nav>
@@ -14,11 +14,7 @@
     <a href="./index5.html">BFC</a>
   </nav>
   <div class="main-layout">
-    <nav class="left-layout">
-      <img src="images/team_logo.png" />
-      <strong>梦之旅</strong>
-    </nav>
-    <section class="middle-layout">
+    <section class="middle-layout box">
       <h1>简介</h1>
       <h2>团队介绍</h2>
       <p>&nbsp;&nbsp;前端梦, 路漫漫, 三个水军在此扬帆启航！</p>
@@ -31,12 +27,13 @@
       <h3>昕</h3>
       <p>&nbsp;&nbsp;前端梦之旅团队小的担当、BUG制造担当、问题制造担当、水军担当</p>
     </section>
-    <aside class="right-layout">
-      <img src="images/fhx.png" />
+    <nav class="left-layout box">
+      <img src="images/team_logo.png" />
+      <strong>梦之旅</strong>
+    </nav>
+    <aside class="right-layout box">
       <img src="images/fhx.png" />
       <img src="images/grx.png" />
-      <img src="images/grx.png" />
-      <img src="images/zfx.png" />
       <img src="images/zfx.png" />
     </aside>
   </div>
