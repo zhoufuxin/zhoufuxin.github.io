@@ -138,7 +138,7 @@ ol li {
   border-collapse: collapse;
 }
 
-.article-show span {
+.article-show .table-description {
   font-size: 14px;
   font-weight: bold;
 }
