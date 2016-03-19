@@ -9,11 +9,10 @@ body, header, footer, article, section, span, div, nav, img, form, ul, a, li, p,
 }
 
 body {
-  min-width: 600px;
   background-color: #ccc;
 }
 
-header, footer {
+body, header, footer {
   width: 100%;
   min-width: 600px;
 }
