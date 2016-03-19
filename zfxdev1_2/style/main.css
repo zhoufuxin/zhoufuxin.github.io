@@ -18,6 +18,12 @@ header {
   height: 60px;
   line-height: 60px;
   background-color: #222;
+  position: fixed;
+  top: 0;
+}
+
+.content {
+  margin-top: 80px;
 }
 
 footer {
