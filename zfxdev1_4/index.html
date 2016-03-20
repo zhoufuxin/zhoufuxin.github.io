@@ -17,7 +17,7 @@
   }
 
   .container {
-    height: 33%;
+    height: 33.333333%;
     border-bottom: 1px solid #999;
   }
 
@@ -47,7 +47,6 @@
     right: -50px;
     bottom: -50px;
   }
-
   
   .show2 .v-layout {
     position: relative;
@@ -58,16 +57,35 @@
     top: -100px;
   }
 
+  .show3 {
+    position: relative;
+  }
+
+  .show3 .box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+  }
+
+  .box p {
+    position: absolute;
+  }
+
   </style>
 </head>
 <body>
   <div class="container show1">
     <table>
       <tr>
-        <td class="">
+        <td>
           <div class="box">
             <div class="corner lefttop"></div>
             <div class="corner rightbottom"></div>
+            <p>
+              这里是用td的默认属性vertical-align:middle<br/>
+            </p>
           </div>
         </td>
       </tr>
@@ -79,7 +97,20 @@
       <div class="box">
         <div class="corner lefttop"></div>
         <div class="corner rightbottom"></div>
+        <p>
+          这里是先在最外层用margin:0 auto 水平居中，再设中间层相对定位，向下移动一半父高，最后内层再向上偏移元素半高<br/>
+        </p>
       </div>
+    </div>
+  </div>
+
+  <div class="container show3">
+    <div class="box">
+      <div class="corner lefttop"></div>
+      <div class="corner rightbottom"></div>
+      <p>
+        这里是用绝对定位，将元素左上角设置到中间，再用margin向上拉回半高，向左拉回半宽<br/>
+      </p>
     </div>
   </div>
 
