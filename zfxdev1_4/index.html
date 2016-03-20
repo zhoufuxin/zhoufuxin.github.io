@@ -19,6 +19,7 @@
   .container {
     height: 33.333333%;
     border-bottom: 1px solid #999;
+    text-align: center;
   }
 
   .box {
@@ -49,8 +50,14 @@
   }
   
   .show2 .v-layout {
+    display: inline-block;
     position: relative;
     top: 50%;
+  }
+
+  .show1 .box {
+    display: inline-block;
+    height: 100px;
   }
 
   .show2 .box {
@@ -78,21 +85,40 @@
 <body>
   <div class="container show1">
     <table>
-      <tr>
-        <td>
-          <div class="box">
-            <div class="corner lefttop"></div>
-            <div class="corner rightbottom"></div>
-            <p>
-              这里是用td的默认属性vertical-align:middle<br/>
-            </p>
-          </div>
-        </td>
-      </tr>
+      <tbody>
+        <tr>
+          <td>
+            <div class="box">
+              <div class="corner lefttop"></div>
+              <div class="corner rightbottom"></div>
+              <p>
+                这里是用td的默认属性vertical-align:middle<br/>
+              </p>
+            </div>
+            <div class="box">
+              <div class="corner lefttop"></div>
+              <div class="corner rightbottom"></div>
+              <p>
+                这里是用td的默认属性vertical-align:middle<br/>
+              </p>
+            </div>
+          </td>
+        </tr>       
+      </tbody>
+
     </table>
   </div>
 
   <div class="container show2">
+    <div class="v-layout">
+      <div class="box">
+        <div class="corner lefttop"></div>
+        <div class="corner rightbottom"></div>
+        <p>
+          这里是先在最外层用margin:0 auto 水平居中，再设中间层相对定位，向下移动一半父高，最后内层再向上偏移元素半高<br/>
+        </p>
+      </div>
+    </div>
     <div class="v-layout">
       <div class="box">
         <div class="corner lefttop"></div>
