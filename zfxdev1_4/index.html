@@ -3,8 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <title>阶段一任务四</title>
+  <style type="text/css">
+  * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+  }
+
+  html, body, table{
+    height: 100%;
+    width: 100%;
+  }
+
+  .container {
+    height: 33%;
+    border-bottom: 1px solid #999;
+  }
+
+  .box {
+    margin: 0 auto;
+    position: relative;
+    width: 400px;
+    height: 200px;
+    background-color: #ccc;
+    overflow: hidden;
+  }
+
+  .corner {
+    position: absolute;
+    background-color: #fc0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+  }
+
+  .lefttop {
+    left: -50px;
+    top: -50px;
+  }
+
+  .rightbottom {
+    right: -50px;
+    bottom: -50px;
+  }
+
+  
+  .show2 .v-layout {
+    position: relative;
+    top: 50%;
+  }
+
+  .show2 .box {
+    top: -100px;
+  }
+
+  </style>
 </head>
 <body>
-  
+  <div class="container show1">
+    <table>
+      <tr>
+        <td class="">
+          <div class="box">
+            <div class="corner lefttop"></div>
+            <div class="corner rightbottom"></div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="container show2">
+    <div class="v-layout">
+      <div class="box">
+        <div class="corner lefttop"></div>
+        <div class="corner rightbottom"></div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
