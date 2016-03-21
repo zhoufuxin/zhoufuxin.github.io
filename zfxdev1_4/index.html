@@ -11,7 +11,17 @@
     box-sizing: border-box;
   }
 
-  html, body, table{
+  html, body, .left, .right {
+    height: 100%;
+  }
+
+  .left, .right {
+    float: left;
+    width: 50%;
+    border: 1px solid #999;
+  }
+
+  table {
     height: 100%;
     width: 100%;
   }
@@ -36,7 +46,7 @@
     background-color: #fc0;
     width: 100px;
     height: 100px;
-    border-radius: 50px;
+    border-radius: 50%;
   }
 
   .lefttop {
@@ -80,65 +90,99 @@
     position: absolute;
   }
 
+  .right .show1 {
+    height: 400px;
+    width: 900px;
+  }
+
+  .right .show1 .v-layout {
+    display: table-cell;
+    height: 400px;
+    width: 900px;
+    vertical-align: middle;
+  }
+
   </style>
 </head>
 <body>
-  <div class="container show1">
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <div class="box">
-              <div class="corner lefttop"></div>
-              <div class="corner rightbottom"></div>
-              <p>
-                这里是用td的默认属性vertical-align:middle<br/>
-              </p>
-            </div>
-            <div class="box">
-              <div class="corner lefttop"></div>
-              <div class="corner rightbottom"></div>
-              <p>
-                这里是用td的默认属性vertical-align:middle<br/>
-              </p>
-            </div>
-          </td>
-        </tr>       
-      </tbody>
+  <div class="left">
+    <div class="container show1">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <div class="box">
+                <div class="corner lefttop"></div>
+                <div class="corner rightbottom"></div>
+                <p>
+                  这里是用td的默认属性vertical-align:middle<br/>
+                </p>
+              </div>
+              <div class="box">
+                <div class="corner lefttop"></div>
+                <div class="corner rightbottom"></div>
+                <p>
+                  这里是用td的默认属性vertical-align:middle<br/>
+                </p>
+              </div>
+            </td>
+          </tr>       
+        </tbody>
 
-    </table>
-  </div>
+      </table>
+    </div>
 
-  <div class="container show2">
-    <div class="v-layout">
+    <div class="container show2">
+      <div class="v-layout">
+        <div class="box">
+          <div class="corner lefttop"></div>
+          <div class="corner rightbottom"></div>
+          <p>
+            这里是先在最外层用margin:0 auto 水平居中，再设中间层相对定位，向下移动一半父高，最后内层再向上偏移元素半高<br/>
+          </p>
+        </div>
+      </div>
+      <div class="v-layout">
+        <div class="box">
+          <div class="corner lefttop"></div>
+          <div class="corner rightbottom"></div>
+          <p>
+            这里是先在最外层用margin:0 auto 水平居中，再设中间层相对定位，向下移动一半父高，最后内层再向上偏移元素半高<br/>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container show3">
       <div class="box">
         <div class="corner lefttop"></div>
         <div class="corner rightbottom"></div>
         <p>
-          这里是先在最外层用margin:0 auto 水平居中，再设中间层相对定位，向下移动一半父高，最后内层再向上偏移元素半高<br/>
-        </p>
-      </div>
-    </div>
-    <div class="v-layout">
-      <div class="box">
-        <div class="corner lefttop"></div>
-        <div class="corner rightbottom"></div>
-        <p>
-          这里是先在最外层用margin:0 auto 水平居中，再设中间层相对定位，向下移动一半父高，最后内层再向上偏移元素半高<br/>
+          这里是用绝对定位，将元素左上角设置到中间，再用margin向上拉回半高，向左拉回半宽<br/>
         </p>
       </div>
     </div>
   </div>
 
-  <div class="container show3">
-    <div class="box">
-      <div class="corner lefttop"></div>
-      <div class="corner rightbottom"></div>
-      <p>
-        这里是用绝对定位，将元素左上角设置到中间，再用margin向上拉回半高，向左拉回半宽<br/>
-      </p>
+  <div class="right">
+    <div class="container show1">
+      <div class="v-layout">
+        <div class="box">
+          <div class="corner lefttop"></div>
+          <div class="corner rightbottom"></div>
+          <p>
+            这里是用display:table-cell<br/>
+          </p>
+        </div>
+        <div class="box">
+          <div class="corner lefttop"></div>
+          <div class="corner rightbottom"></div>
+          <p>
+            这里是用display:table-cell<br/>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
-
 </body>
 </html>
