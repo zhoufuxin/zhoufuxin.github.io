@@ -2,6 +2,19 @@
   box-sizing: border-box;
 }
 
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
 body, header, footer, article, section, span, div, nav, img, form, ul, a, li, p, input, select, h1, h2, h3, textarea, aside, label, option, table, thead, th, tr, td, tfoot, tbody, figure, figcaption {
   margin: 0;
   padding: 0;
@@ -14,7 +27,7 @@ body {
 
 body, header, footer {
   width: 100%;
-  min-width: 600px;
+  min-width: 800px;
 }
 
 header {
@@ -26,7 +39,7 @@ header {
 }
 
 .content {
-  margin-top: 80px;
+  margin-top: 60px;
 }
 
 footer {
@@ -200,7 +213,7 @@ aside h2 {
 
 .sign-in-form div span {
   display: inline-block;
-  width: 30%;
+  width: 32%;
   text-align: right;
   height: 2em;
   line-height: 2em;
@@ -213,7 +226,7 @@ aside h2 {
 }
 
 .email-tips, .password-tips {
-  margin-left: 30%;
+  margin-left: 32%;
   padding-left: 10px;
   font-size: 14px;
   color: #999;
@@ -227,11 +240,12 @@ select {
 }
 
 textarea {
-  width: 60%;
-  max-width: 60%;
+  width: 66%;
+  max-width: 66%;
   height: 100px;
   vertical-align: top;
   border: 1px solid #ccc;
+  font-size: 14px;
 }
 
 .sign-submit {
@@ -240,4 +254,23 @@ textarea {
   background-color: #35D;
   height: 40px;
   border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.left-content, aside {
+  float: left;
+}
+
+.left-content {
+  margin-right: 520px;
+}
+
+aside {
+  width: 500px;
+  margin-left: -520px;
+}
+
+.pic-show-content figure {
+  float: left;
 }
