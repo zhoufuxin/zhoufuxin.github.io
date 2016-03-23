@@ -1,4 +1,4 @@
-html, body, div, img, h1, h2, p {
+html, body, div, img, h1, h2, h3, p {
   margin: 0;
   padding: 0;
   border: 0;
@@ -35,12 +35,12 @@ div, h1, p {
 .page-header, .page-footer {
   position: relative;
   height: 63px;
+  line-height: 24px;
+  font-size: 12px;
 }
 
 .page-header {
   border-bottom: 2px solid #938e8c;
-  line-height: 24px;
-  font-size: 12px;
 }
 
 .page-header .icon {
@@ -208,20 +208,70 @@ div, h1, p {
   float: left;
 }
 
+
 .page-bottom .content-left {
   margin-right: 480px;
 }
 
 .page-bottom .content-left hgroup {
   border-bottom: 2px solid #11456b;
+  font-weight: bold;
+  font-family: "黑体";
+}
+
+.page-bottom .content-left hgroup h1 {
+  font-size: 72px;
+  color: #f5e327;
+  font-style: italic;
+  display: inline-block;
+  margin-right: 18px;
+  line-height: 72px;
+}
+
+.page-bottom .content-left hgroup h2 {
+  font-size: 42px;
+  color: #11456b;
+  display: inline-block;
+  line-height: 42px;
+}
+
+.page-bottom .content-left hgroup h3 {
+  font-size: 33px;
+  line-height: 33px;
+  color: #11456b;
+  margin: 4px 0 14px 0;
+}
+
+.page-bottom .content-left p {
+  font-size: 12px;
+  color: #767777;
+  font-family: "宋体";
+  line-height: 16px;
+  text-indent: 2em;
+}
+
+.page-bottom .content-left p:first-child {
+  margin: 22px 1px 0 1px;
+  text-indent: 0;
+}
+
+.page-bottom .content-left p big {
+  font-size: 70px;
+  line-height: 70px;
+  color: #f5e327;
+  font-family: "微软雅黑";
+  float: left;
+  margin: 0 10px 10px 0;
+  text-indent: 0;
 }
 
 .page-bottom .content-left img {
   width: 167px;
   height: 289px;
   float: right;
-  margin: 20px 8px 20px 40px;
+  margin: 15px 8px 10px 19px;
 }
+
 
 
 .page-bottom .content-right {
@@ -246,9 +296,7 @@ div, h1, p {
   right: 0;
   height: 61px;
   bottom: 0;
-  background-color: #000;
-  filter: alpha(opacity=30);
-  opacity: 0.3;
+  background-color: rgba(0,0,0,0.3);
 }
 
 .page-bottom .content-right .title-pic .bottom .title {
@@ -279,9 +327,138 @@ div, h1, p {
   width: 459px;
   height: 318px;
   margin-top: 32px;
+  background-color: #eeedd6;
+  position: relative;
 }
 
+.page-bottom .content-right .index-content .top {
+  position: absolute;
+}
+
+.page-bottom .content-right .index-content .top p {
+  margin: 20px 0 5px 30px;
+  font-size: 16px;
+  color: #5a5b5b;
+  line-height: 24px;
+  font-family: "宋体";
+  width: auto;
+}
+
+.page-bottom .content-right .index-content .top p i {
+  display: inline-block;
+  border-bottom: 1px dotted #000;
+}
+
+.page-bottom .content-right .index-content .top p em {
+  display: inline-block;
+}
+
+.page-bottom .content-right .index-content .top p em span {
+  font-size: 12px;
+  color: #11456c;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.page-bottom .content-right .index-content .top p em:first-child {
+  text-align: left;
+  font-style: normal;
+}
+
+.page-bottom .content-right .index-content .top p em:last-child {
+  font-size: 12px;
+
+}
+
+.page-bottom .content-right .index-content .left {
+  width: 260px;
+  height: 160px;
+  background-color: #d45d5c;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.page-bottom .content-right .index-content .left .flag {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  font-size: 110px;
+  font-family: "微软雅黑";
+  border-right: 2px solid #fff;
+  height: 86px;
+  line-height: 86px;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.page-bottom .content-right .index-content .left .content {
+  position: absolute;
+  left: 85px;
+  top: 45px;
+  height: 86px;
+}
+
+.page-bottom .content-right .index-content .left .content h1 {
+  font-size: 21px;
+  font-style: italic;
+  font-family: "黑体";
+  line-height: 24px;
+  color: #fff;
+}
+
+.page-bottom .content-right .index-content .left .content p {
+  font-size: 12px;
+  font-family: "黑体";
+  line-height: 12px;
+  color: #fff;
+}
+
+.page-bottom .content-right .index-content .right {
+  position: absolute;
+  right: 0;
+  top: 160px;
+  width: 166px;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.page-bottom .content-right .index-content .right p {
+  font-size: 14px;
+  line-height: 16px;
+  color: #5a5b5b;
+  font-family: "黑体";
+}
+
+.page-bottom .content-right .index-content .right big {
+  font-size: 72px;
+  height: 36px;
+  line-height: 16px;
+  display: inline-block;
+  color: #d45d5c;
+  font-family: "黑体";
+}
+
+.page-bottom .content-right .index-content .right .begin {
+  float: left;
+  margin: 16px 10px -36px -40px ;
+}
+
+.page-bottom .content-right .index-content .right .end {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 16px -36px -52px 0;
+  
+}
 
 .page-footer {
   border-top: 1px solid #938e8c;
+}
+
+.page-footer .link {
+  position: absolute;
+  right: 0;
+  color: #d45d5c;
+  font-family: "黑体";
 }
