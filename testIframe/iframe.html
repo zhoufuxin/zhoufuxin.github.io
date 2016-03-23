@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>iframe高度自适应</title>
+  <script src='./jquery-1.12.2.min.js'></script>
+</head>
+<body>
+  <div>aaaaaaaa</div>
+  <div>aaaaaaaa</div>
+  <iframe src="./index.html" id="iframepage" name="iframepage" frameBorder=0 scrolling=no width="100%" onLoad="reinitIframeEND();"  ></iframe>  
+  <div>aaaaaaaa</div>
+  <div>aaaaaaaa</div>
+  <div>aaaaaaaa</div>
+  <div>aaaaaaaa</div>
+  <div>aaaaaaaa</div>
+  <div>aaaaaaaa</div>
+  <div>aaaaaaaa</div>
+  <div>aaaaaaaa</div>
+  <div>aaaaaaaa</div>
+  <div>aaaaaaaa</div>
+  <script type="text/javascript">
+  /*
+  var timer = null;
+  var run = function(){
+    timer = setInterval(function(){
+      var iframeObjs = document.getElementsByTagName("iframe");
+      var iframeObj = iframeObjs[0];
+
+      if (iframeObj != null) {
+        console.log(iframeObj.height);
+      }
+    }, 50);
+  };
+
+  run();
+  */
+  function reinitIframe(){  
+  var iframe = document.getElementById("iframepage");  
+  try{  
+      var bHeight = iframe.contentWindow.document.body.scrollHeight;  
+      var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;  
+      var height = Math.max(bHeight, dHeight);  
+      iframe.height = height;  
+  }catch (ex){}  
+  }  
+    
+  var timer1 = window.setInterval("reinitIframe()", 500); //定时开始  
+    
+  function reinitIframeEND(){  
+  var iframe = document.getElementById("iframepage");  
+  try{  
+      var bHeight = iframe.contentWindow.document.body.scrollHeight;  
+      var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;  
+      var height = Math.max(bHeight, dHeight);  
+      iframe.height = height;  
+  }catch (ex){}  
+    // 停止定时  
+    window.clearInterval(timer1);  
+  }  
+  </script>
+</body>
+</html>
