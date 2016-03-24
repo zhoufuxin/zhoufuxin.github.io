@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+  <meta charset="UTF-8">
+  <title>八：响应式网格（栅格化）布局</title>
+  <link rel="stylesheet" href="style/main.css">
+  <style type="text/css">
+  html, body, div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    padding: 10px;
+  }
+
+  div[class*="col-md-"] {
+    padding: 10px;
+    float: left;
+  }
+
+  .content {
+    background-color: #eee;
+    border: 1px solid #999;
+    height: 50px;
+    width: 100%;
+  }
+
+  .col-md-1 {
+    width: 8.333333%;
+  }
+
+  .col-md-2 {
+    width: 16.666666%;
+  }
+
+  .col-md-3 {
+    width: 25%;
+  }
+
+  .col-md-4 {
+    width: 33.333333%;
+  }
+
+  .col-md-6 {
+    width: 50%;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="col-md-4"><div class="content"></div></div>
+  <div class="col-md-4"><div class="content"></div></div>
+  <div class="col-md-4"><div class="content"></div></div>
+  <div class="col-md-3"><div class="content"></div></div>
+  <div class="col-md-6"><div class="content"></div></div>
+  <div class="col-md-3"><div class="content"></div></div>
+  <div class="col-md-1"><div class="content"></div></div>
+  <div class="col-md-1"><div class="content"></div></div>
+  <div class="col-md-2"><div class="content"></div></div>
+  <div class="col-md-2"><div class="content"></div></div>
+  <div class="col-md-6"><div class="content"></div></div>
+</div>
+</body>
+</html>
