@@ -43,4 +43,4 @@ Temporary Items
 .apdisk
 
 # Large Files
-.psd
+*.psd
