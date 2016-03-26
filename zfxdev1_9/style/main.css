@@ -1,0 +1,90 @@
+html, body, div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.header {
+  width: 100%;
+  height: 56px;
+  background-color: #228abf;
+}
+
+.body {
+  width: 1280px;
+  margin: 0 auto;
+  background-color: #2a2e3d;
+}
+
+.body-aside {
+  float: left;
+  width: 260px;
+  position: relative;
+}
+
+.body-content {
+  float: right;
+  background-color: #eeeeed;
+  width: 1020px;
+}
+
+.body-aside .user-info {
+  height: 149px;
+}
+
+.body-aside .menu {
+
+}
+
+.body-content .content-nav {
+  height: 30px;
+  background-color: #fff;
+  position: relative;
+}
+
+.body-content .content-body {
+  width: auto;
+  margin: 19px 69px 0 59px;
+}
+
+.body-content .content-body > div {
+  background-color: #fff;
+}
+
+.body-content .content-body .search-option {
+  height: 87px;
+}
+
+.body-content .content-body .search-price {
+  margin: 8px 0;
+  height: 65px;
+}
+
+.body-content .content-body .search-price {
+  margin: 8px 0;
+  height: 65px;
+}
+
+.body-content .content-body .statistical {
+  margin: 9px 0;
+  height: 93px;
+}
+
+.body-content .content-body .project-show {
+  margin: 4px 0 154px 0;
+  height: 736px;
+}
