@@ -259,3 +259,52 @@
   margin: 4px 0 154px 0;
   height: 736px;
 }
+
+.project-show > div {
+  margin-bottom: 8px;
+  height: 357px;
+
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  overflow: hidden;
+}
+
+.project-show > div .container-header {
+  height: 42px;
+  background-color: #f4f5f7;
+}
+
+.project-show > div .container-header h1 {
+  line-height: 42px;
+  margin-left: 20px;
+  color: #bfc0c0;
+  font-weight: normal;
+
+
+}
+
+.project-show > div .container-body {
+  background-color: #fff;
+  height: 315px;
+}
+
+.project-list {
+  float: left;
+  width: 531px;
+}
+
+.project-content {
+  float: right;
+  width: 350px;
+}
+
+.calendar {
+  float: left;
+  width: 350px;
+}
+
+.ranking-list {
+  float: right;
+  width: 531px;
+}
