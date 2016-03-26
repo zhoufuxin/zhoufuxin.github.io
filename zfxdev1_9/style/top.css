@@ -19,6 +19,8 @@
   height: 28px;
   border: none;
   border-radius: 14px;
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
   padding: 6px 40px;
   font-size: 16px;
   background-image: url("./images/search.png");

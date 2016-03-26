@@ -11,7 +11,7 @@ div {
   height: 100px;
 }
 
-.body-aside .content .user-info .user-img {
+.user-info .user-img {
   display: block;
   float: left;
   margin: 21px 0 22px 45px;
@@ -19,20 +19,24 @@ div {
   width: 56px;
   border: 1px solid #ecebec;
   border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
   overflow: hidden;
   position: relative;
 }
 
-.body-aside .content .user-info .user-img img {
+.user-info .user-img img {
   position: absolute;
   left: 4px;
   top:4px;
   height: 46px;
   width: 46px;
   border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
 }
 
-.body-aside .content .user-info .user-name {
+.user-info .user-name {
   display: block;
   float: left;
   margin-left: 20px;
@@ -40,24 +44,24 @@ div {
   font-size: 16px;
 }
 
-.body-aside .content .user-collections, .body-aside .content .user-fans {
+.user-collections, .user-fans {
   position: absolute;
   text-align: center;
 }
 
-.body-aside .content .user-collections a, .body-aside .content .user-fans a{
+.user-collections a, .user-fans a{
   color: #ecebec;
 }
 
-.body-aside .content .user-collections a:hover, .body-aside .content .user-fans a:hover {
+.user-collections a:hover, .user-fans a:hover {
   color: #f13;
 }
 
-.body-aside .content .user-collections {
+.user-collections {
   left: 62px;
 }
 
-.body-aside .content .user-fans {
+.user-fans {
   left: 148px;
 }
 

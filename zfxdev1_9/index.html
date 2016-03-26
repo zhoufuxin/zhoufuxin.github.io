@@ -6,39 +6,168 @@
   <link rel="stylesheet" href="./style/main.css">
   <link rel="stylesheet" href="./style/top.css">
   <link rel="stylesheet" href="./style/main_aside.css">
+  <link rel="stylesheet" href="./style/main_content.css">
 </head>
 <body>
   <div class="header">
-    <div class="logo">
-      <a href="#"><img src="./images/logo.png" alt="logo" /></a>
+    <div class="main-header">
+      <div class="logo">
+        <a href="#"><img src="./images/logo.png" alt="logo" /></a>
+      </div>
+      <div class="serach-edit">
+        <input type="text" />
+        <a href="#"><img src="./images/search.png" alt="search" /></a>
+      </div>
+      <a href="#" class="login-btn"><img src="./images/user.png" alt="user" /><span>登录</span></a>
     </div>
-    <div class="serach-edit">
-      <input type="text" />
-      <a href="#"><img src="./images/search.png" alt="search" /></a>
-    </div>
-    <a href="#" class="login-btn"><img src="./images/user.png" alt="user" /><span>登录</span></a>
   </div>
 
   <div class="body clearfix">
     <div class="body-content">
       <div class="content-nav">
-        
+        <ul>
+          <li>C站</li>
+          <li><span>/</span><a href="#">个人报表</a></li>
+          <li><span>/</span><a href="#">文件一</a></li>
+          <li><span>/</span><a href="#">文档一</a></li>
+        </ul>
       </div>
 
       <div class="content-body">
-        <div class="search-option">
-        
+        <div class="search-option clearfix">
+          <form action="javascript:void(0)">
+            <div class="condition-item">
+              <label>查询项</label>
+              <select class="zfx-select" name="item">
+                <option value="1" selected="selected">第一项</option>
+                <option value="2">第二项</option>
+              </select>
+            </div>
+
+            <div class="condition-object">
+              <div class="condition-buyer">
+                <label>买家</label>
+                <select class="zfx-select" name="buyer">
+                  <option value="1" selected="selected">zfx</option>
+                  <option value="2">zfxzfx</option>
+                </select>
+              </div>
+              <div class="condition-seller">
+                <label>卖家</label>
+                <select class="zfx-select" name="seller">
+                  <option value="1" selected="selected">正方形</option>
+                  <option value="2">在飞行中法系</option>
+                </select>
+              </div>
+              <a href="###"><img src="./images/exchange_up_down.png" alt="互换" /></a>
+            </div>
+
+            <div class="condition-details">
+              <div class="condition-date">
+                <label>日期</label>
+                <input class="zfx-input" name="date" type="text" value="2016-04-01">
+              </div>
+              <div class="condition-time-consuming">
+                <label>总耗时</label>
+                <select class="zfx-select" name="time-consuming">
+                  <option value="1">1 天</option>
+                  <option value="2">2 天</option>
+                  <option value="3">3 天</option>
+                  <option value="4">4 天</option>
+                  <option value="5">5 天</option>
+                  <option value="6">6 天</option>
+                  <option value="7">7 天</option>
+                  <option value="8" selected="selected">8 天</option>
+                  <option value="9">9 天</option>
+                  <option value="10">10 天</option>
+                </select>
+              </div>
+              <div class="condition-people-number">
+                <label>人数</label>
+                <select class="zfx-select" name="people-number">
+                  <option value="1">1 人</option>
+                  <option value="2">2 人</option>
+                  <option value="3">3 人</option>
+                  <option value="4">4 人</option>
+                  <option value="5">5 人</option>
+                  <option value="6">6 人</option>
+                  <option value="7">7 人</option>
+                  <option value="8">8 人</option>
+                  <option value="9">9 人</option>
+                  <option value="10" selected="selected">10 人</option>
+                </select>
+              </div>
+              <div class="condition-deal">
+                <label>成交项</label>
+                <select class="zfx-select" name="deal">
+                  <option value="1">1 项</option>
+                  <option value="2">2 项</option>
+                  <option value="3">3 项</option>
+                  <option value="4">4 项</option>
+                  <option value="5">5 项</option>
+                  <option value="6">6 项</option>
+                  <option value="7">7 项</option>
+                  <option value="8">8 项</option>
+                  <option value="9">9 项</option>
+                  <option value="10" selected="selected">10 项</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="search-submit">
+              <button class="search-btn blue-btn" type="submit" value="搜索">搜索</button>
+            </div>
+          </form>
         </div>
 
-        <div class="search-price">
-        
+        <div class="search-price clearfix">
+          <div class="search-price-banner">
+            <div class="banner-left"><img src="./images/banner_left.png" alt="左滑"></div>
+            <ul>
+              <li>
+                <span class="time">10:00 am</span>
+                <div class="price-show"><img src="./images/rmb.png" alt="RMB"><span class="price">1200</span></div>
+              </li>
+              <li>
+                <span class="time">11:00 am</span>
+                <div class="price-show"><img src="./images/rmb.png" alt="RMB"><span class="price">1300</span></div>
+              </li>
+              <li>
+                <span class="time">12:00 am</span>
+                <div class="price-show"><img src="./images/rmb.png" alt="RMB"><span class="price">1200</span></div>
+              </li>
+              <li>
+                <span class="time">01:00 pm</span>
+                <div class="price-show"><img src="./images/rmb.png" alt="RMB"><span class="price">1400</span></div>
+              </li>
+              <li>
+                <span class="time">02:00 pm</span>
+                <div class="price-show"><img src="./images/rmb.png" alt="RMB"><span class="price">1500</span></div>
+              </li>
+              <li>
+                <span class="time">03:00 pm</span>
+                <div class="price-show"><img src="./images/rmb.png" alt="RMB"><span class="price">1800</span></div>
+              </li>
+            </ul>
+            <div class="banner-right"><img src="./images/banner_right.png" alt="右滑"></div>
+          </div>
+          <div class="search-history">
+            <img src="./images/history.png" alt="历史查询图标">
+            历史查询
+          </div>
         </div>
 
-        <div class="statistical">
-        
+        <div class="statistical clearfix">
+          <div class="title">2016年4月份统计</div>
+          <ul>
+            <li class="green-statistical"><span>133311</span><label>成交量</label><div class="pic"></div></li>
+            <li class="blue-statistical"><span>133311</span><label>成交量</label><div class="pic"></div></li>
+            <li class="red-statistical"><span>133311</span><label>成交量</label><div class="pic"></div></li>
+            <li class="yellow-statistical"><span>133311</span><label>成交量</label><div class="pic"></div></li>
+          </ul>
         </div>
 
-        <div class="project-show">
+        <div class="project-show clearfix">
           <div class="project-list">
           
           </div>

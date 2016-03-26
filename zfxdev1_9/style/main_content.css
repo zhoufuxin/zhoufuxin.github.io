@@ -1,0 +1,261 @@
+
+.body-content .content-nav ul {
+  list-style: none;
+
+}
+
+.body-content .content-nav ul li {
+  display: inline-block;
+  line-height: 30px;  
+}
+
+.body-content .content-nav ul li:first-child {
+  margin-left: 30px;
+  color: #aaa;
+}
+
+.body-content .content-nav ul span {
+  color: #aaa;
+}
+
+.body-content .content-nav ul a {
+  display: inline-block;
+  margin-left: 4px;
+  color: #aaa;
+}
+
+.body-content .content-nav ul a:hover {
+  color: #6898c2;
+}
+
+.search-option {
+  height: 87px;
+  background-color: #fff;
+}
+
+.search-option form > div {
+  padding-top: 15px;
+  float: left;
+}
+
+.search-option label {
+  color: #b7b7b7;
+}
+
+.condition-item {
+  width: 180px;
+}
+
+.condition-item label {
+  margin-left: 30px;
+}
+
+.condition-item select {
+  width: 70px;
+  margin-left: 10px;
+}
+
+.condition-object {
+  width: 205px;
+  position: relative;
+}
+
+.condition-object label {
+}
+
+.condition-object select {
+  width: 120px;
+  margin-left: 5px;
+}
+
+.condition-buyer, .condition-seller, .condition-object a {
+  position: absolute;
+}
+
+.condition-object .condition-seller {
+  top: 45px;
+}
+
+.condition-object a {
+  display: block;
+  left: 156px;
+  top: 24px;
+}
+
+.condition-details {
+  width: 340px;
+  position: relative;
+}
+
+.condition-date, .condition-time-consuming, .condition-people-number, .condition-deal {
+  position: absolute;
+}
+
+.condition-date {
+  left: 20px;
+}
+
+.condition-date input {
+  width: 120px;
+  margin-left: 10px;
+}
+
+.condition-time-consuming {
+  left: 195px;
+}
+
+.condition-time-consuming select {
+  width: 71px;
+  margin-left: 5px;
+}
+
+.condition-people-number {
+  left: 20px;
+  top: 45px;
+}
+
+.condition-people-number select {
+  width: 71px;
+  margin-left: 10px;
+}
+
+.condition-deal {
+  left: 146px;
+  top: 45px;
+}
+
+.condition-deal select {
+  width: 120px;
+  margin-left: 5px;
+}
+
+.search-submit {
+  width: auto;
+}
+
+.zfx-input, .zfx-select {
+  border: 1px solid #e1e2e2;
+  height: 25px;
+}
+
+.zfx-input {
+  padding-left: 5px;
+}
+
+.zfx-select {
+  color: #333;
+}
+
+.blue-btn {
+  border: none;
+  background-color: #388ac1;
+  color: #fff;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+
+.blue-btn:hover {
+  border: none;
+  background-color: #388ac1;
+  color: #f13;
+}
+
+.search-submit .search-btn {
+  width: 58px;
+  height: 24px;
+  margin-top: 13px;
+}
+
+.search-price {
+  margin: 8px 0;
+}
+
+.banner-left, .search-price-banner li, .banner-right, .search-history {
+  float: left;
+  margin-right: 5px;
+  background-color: #fff;
+  height: 65px;
+}
+
+.banner-left, .banner-right {
+  width: 30px;
+}
+
+.search-price-banner li {
+  width: 110px;
+}
+
+.search-history {
+  margin-right: 0;
+  width: 132px;
+}
+
+
+.statistical {
+  margin: 9px 0;
+  height: 93px;
+}
+
+.statistical .title {
+  font-family: "微软雅黑";
+  color: #585858;
+  font-weight: bold;
+  height: 20px;
+}
+
+.statistical .pic {
+  width: 60px;
+  height: 46px;
+}
+
+.statistical ul li {
+  float: left;
+  width: 200px;
+  height: 70px;
+  margin-right: 30px;
+  background-color: #fff;
+  border-left-width: 4px;
+  border-left-style: solid;
+}
+
+.statistical ul li:last-child {
+  margin-right: 0;
+}
+
+.green-statistical {
+  border-color: #43b29d;
+}
+
+.green-statistical .pic {
+  background-color: #43b29d;
+}
+
+.blue-statistical {
+  border-color: #388ac1;
+}
+
+.blue-statistical .pic {
+  background-color: #388ac1;
+}
+
+.red-statistical {
+  border-color: #d04b36;
+}
+
+.red-statistical .pic {
+  background-color: #d04b36;
+}
+
+.yellow-statistical {
+  border-color: #e1cd46;
+}
+
+.yellow-statistical .pic {
+  background-color: #e1cd46;
+}
+
+.project-show {
+  margin: 4px 0 154px 0;
+  height: 736px;
+}

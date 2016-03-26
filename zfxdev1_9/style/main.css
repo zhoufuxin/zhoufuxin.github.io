@@ -1,4 +1,4 @@
-html, body, div , input, img, a, span, input, h1, h2, h3, i, ul, li {
+html, body, div , input, img, a, span, input, h1, h2, h3, i, ul, li, select, button, label, option, form {
   margin: 0;
   padding: 0;
   border: 0;
@@ -7,6 +7,7 @@ html, body, div , input, img, a, span, input, h1, h2, h3, i, ul, li {
   font-family: "黑体";
   text-decoration: none;
   outline:none;
+  list-style: none;
 }
 
 .clearfix:before, .clearfix:after {
@@ -33,9 +34,15 @@ body {
   position: relative;
 }
 
-.body {
+.header .main-header {
+}
+
+.main-header, .body {
   width: 1280px;
   margin: 0 auto;
+}
+
+.body {
   background-color: #2a2e3d;
 }
 
@@ -68,32 +75,4 @@ body {
 .body-content .content-body {
   width: auto;
   margin: 19px 69px 0 59px;
-}
-
-.body-content .content-body > div {
-  background-color: #fff;
-}
-
-.body-content .content-body .search-option {
-  height: 87px;
-}
-
-.body-content .content-body .search-price {
-  margin: 8px 0;
-  height: 65px;
-}
-
-.body-content .content-body .search-price {
-  margin: 8px 0;
-  height: 65px;
-}
-
-.body-content .content-body .statistical {
-  margin: 9px 0;
-  height: 93px;
-}
-
-.body-content .content-body .project-show {
-  margin: 4px 0 154px 0;
-  height: 736px;
 }
