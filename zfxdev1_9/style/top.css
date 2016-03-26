@@ -1,0 +1,64 @@
+.header .logo {
+  position: absolute;
+  top: 10px;
+  left: 50px;
+  width: 34px;
+  height: 34px;
+}
+
+.header .serach-edit {
+  position: absolute;
+  top: 14px;
+  right: 156px;
+  width: 312px;
+  height: 28px;
+}
+
+.header .serach-edit input {
+  width: 312px;
+  height: 28px;
+  border: none;
+  border-radius: 14px;
+  padding: 6px 40px;
+  font-size: 16px;
+  background-image: url("./images/search.png");
+}
+
+.header .serach-edit a {
+  display: block;
+  position: absolute;
+  top: 6px;
+  left: 15px;
+}
+
+.header .login-btn {
+  position: absolute;
+  top: 15px;
+  right: 94px;
+  height: 28px;
+  width: 41px;
+  display: block;
+  color: #ecebec;
+}
+
+.header .login-btn:hover {
+  color: #f13;
+}
+
+.header .login-btn img {
+  position: absolute;
+  height: 16px;
+  top: 6px;
+  bottom: 0;
+  left: 0;
+}
+
+.header .login-btn span {
+  position: absolute;
+  height: 16px;
+  line-height: 16px;
+  top: 6px;
+  bottom: 0;
+  left: 16px;
+  width: 25px;
+}

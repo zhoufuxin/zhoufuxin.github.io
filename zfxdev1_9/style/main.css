@@ -1,8 +1,12 @@
-html, body, div {
+html, body, div , input, img, a, span, input, h1, h2, h3, i, ul, li {
   margin: 0;
   padding: 0;
   border: 0;
   box-sizing: border-box;
+  font-size: 12px;
+  font-family: "黑体";
+  text-decoration: none;
+  outline:none;
 }
 
 .clearfix:before, .clearfix:after {
@@ -18,10 +22,15 @@ html, body, div {
   *zoom: 1;
 }
 
+body {
+  min-width: 1280px;
+}
+
 .header {
   width: 100%;
   height: 56px;
   background-color: #228abf;
+  position: relative;
 }
 
 .body {
@@ -42,7 +51,7 @@ html, body, div {
   width: 1020px;
 }
 
-.body-aside .user-info {
+.body-aside .content {
   height: 149px;
 }
 

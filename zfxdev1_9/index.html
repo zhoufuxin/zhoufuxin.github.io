@@ -4,10 +4,19 @@
   <meta charset="UTF-8">
   <title>任务九</title>
   <link rel="stylesheet" href="./style/main.css">
+  <link rel="stylesheet" href="./style/top.css">
+  <link rel="stylesheet" href="./style/main_aside.css">
 </head>
 <body>
   <div class="header">
-    
+    <div class="logo">
+      <a href="#"><img src="./images/logo.png" alt="logo" /></a>
+    </div>
+    <div class="serach-edit">
+      <input type="text" />
+      <a href="#"><img src="./images/search.png" alt="search" /></a>
+    </div>
+    <a href="#" class="login-btn"><img src="./images/user.png" alt="user" /><span>登录</span></a>
   </div>
 
   <div class="body clearfix">
@@ -48,14 +57,93 @@
         </div>
       </div>
     </div>
-    
+
     <div class="body-aside">
-      <div class="user-info">
-        
+
+      <div class="content">
+        <div class="user-info">
+          <div class="user-img">
+            <img src="./images/zfx.png" alt="头像" />
+          </div>
+          <div class="user-name">
+            ZFX
+          </div>
+        </div>
+
+        <div class="user-collections">
+          <a href="#">
+            <span class="number">111</span>
+            <span class="title">收藏</span>
+          </a>
+        </div>
+        <div class="user-fans">
+          <a href="#">
+            <span class="number">313</span>
+          <span class="title">粉丝</span>
+          </a>
+        </div>
       </div>
 
       <div class="menu">
-        
+        <ul>
+          <h1 class="menu-selected"><img src="./images/personal_statements.png" alt="个人报表flag"><span>个人报表</span></h1>
+          <li>
+            <ul>
+              <h2>
+                <img src="./images/tree_collect.png" alt="文件">
+                <img src="./images/file.png" alt="文件">
+                <span>文件一</span>
+              </h2>
+            </ul>  
+          </li>
+          <li>
+            <ul>
+              <h2 class="menu-selected">
+                <img src="./images/tree_expand.png" alt="文件">
+                <img src="./images/file.png" alt="文件">
+                <span>文件二</span>
+              </h2>
+              <li class="menu-selected">
+                <img src="./images/document.png" alt="文档">
+                <span>文档1</span>
+              </li>
+              <li>
+                <img src="./images/document.png" alt="文档">
+                <span>文档2</span>
+              </li>
+            </ul>  
+          </li>
+          <li>
+            <ul>
+              <h2>
+                <img src="./images/tree_collect.png" alt="文件">
+                <img src="./images/file.png" alt="文件">
+                <span>文件三</span>
+              </h2>
+            </ul>  
+          </li>
+
+        </ul>
+
+        <ul>
+          <h1><img src="./images/star.png" alt="个人收藏flag"><span>个人收藏</span></h1>
+        </ul>
+
+        <ul>
+          <h1><img src="./images/share.png" alt="我的分享flag"><span>我的分享</span></h1>
+        </ul>
+
+        <ul>
+          <h1><img src="./images/star.png" alt="图库flag"><span>图库</span></h1>
+        </ul>
+
+        <ul>
+          <h1><img src="./images/star.png" alt="成长记录flag"><span>成长记录</span></h1>
+        </ul>
+
+        <ul>
+          <h1><img src="./images/infomation.png" alt="账户信息flag"><span>账户信息</span></h1>
+        </ul>
       </div>
     </div>
   </div>
