@@ -144,6 +144,11 @@
 
 .zfx-select {
   color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url("../images/combo_gray.png") no-repeat 95%;
+  padding-left: 5px;
 }
 
 .blue-btn {
@@ -273,6 +278,7 @@
   color: #323333;
   height: 28px;
   line-height: 28px;
+  font-size: 13px;
 }
 
 .statistical ul li .text label {
@@ -507,6 +513,102 @@
 .calendar {
   float: left;
   width: 350px;
+}
+
+.calendar .container-body {
+  padding: 10px 20px 0 20px;
+}
+
+.calendar .options {
+  height: 22px;
+}
+
+.calendar .options select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url(../images/combo_grey.png) no-repeat 95%;
+}
+
+.calendar .options .item {
+  float: left;
+  border: 1px solid #cbcbcb;
+  height: 100%;
+  margin-right: 5px;
+  color: #535353;
+}
+
+.calendar .options .select-year {
+  width: 65px;
+}
+
+.calendar .options .select-month {
+  width: 46px;
+  border-left: 1px solid #f5f6f7;
+  border-right: 1px solid #f5f6f7;
+}
+
+.calendar .options .month > * {
+  height: 100%;
+}
+
+.calendar .options .month button {
+  width: 18px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.calendar .options .select-day {
+  width: 75px;
+
+}
+
+.calendar .options .back-btn {
+  width: 65px;
+  background-color: #fff;
+}
+
+.calendar-head-table {
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  color: #535353;
+  border-top: 1px solid #a9cfec;
+  border-bottom: 1px solid #e1e1e1;
+  border-collapse: collapse;
+}
+
+.calendar-head-table thead td {
+  height: 31px;
+}
+
+.calendar-table {
+  width: 100%;
+  text-align: center;
+  color: #323333;
+}
+
+.sunday {
+  color: #f4c11c;
+}
+
+.calendar-table tbody td {
+  height: 45px;
+  width: 41px;
+  margin: 1px;
+  border: 1px solid #fff;
+}
+
+.calendar-table tbody td:hover, .calendar-table tbody .selected {
+  border: 1px solid #f4c11c;
+}
+
+.calendar-table tbody td > div {
+  color: #323333;
+}
+
+.weekend div:nth-child(1), .festival div:nth-child(2) {
+  color: #d14c50;
 }
 
 
