@@ -5,10 +5,11 @@
   <title>十：flexbox</title>
   <link rel="stylesheet" href="style/main.css">
   <style type="text/css">
-  html, body, div, ul {
+  html, body, div, ul, li {
     margin: 0;
     padding: 0;
     border: 0;
+    box-sizing: border-box;
   }
 
   ul {
@@ -21,14 +22,15 @@
     max-width: 800px;
 
     display: flex;
-    flex-flow: row wrap;
     justify-content: space-between;
+    align-content: space-between;
     align-items: center;
   }
 
   .flex-item {
     width: 150px;
     border: 1px solid #f00;
+    padding: 20px;
   }
 
   .flex-item:nth-child(1) {
@@ -52,7 +54,12 @@
     order: 4;
   }
 
-  @media screen and max-width(640px) {
+  @media screen and (max-width: 640px) {
+    .flex-container {
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
     .flex-item:nth-child(4) {
       order: 0;
     }
