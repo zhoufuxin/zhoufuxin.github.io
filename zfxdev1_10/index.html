@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+  <meta charset="UTF-8">
+  <title>十：flexbox</title>
+  <link rel="stylesheet" href="style/main.css">
+  <style type="text/css">
+  html, body, div, ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .flex-container {
+    border: 1px solid #999;
+    padding: 20px;
+    max-width: 800px;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .flex-item {
+    width: 150px;
+    border: 1px solid #f00;
+  }
+
+  .flex-item:nth-child(1) {
+    height: 120px;
+    order: 1;
+  }
+
+  .flex-item:nth-child(2) {
+    height: 100px;
+    order: 2;
+  }
+
+  .flex-item:nth-child(3) {
+    height: 40px;
+    order: 3;
+  }
+
+  .flex-item:nth-child(4) {
+    height: 200px;
+    border-color: #00f;
+    order: 4;
+  }
+
+  @media screen and max-width(640px) {
+    .flex-item:nth-child(4) {
+      order: 0;
+    }
+  }
+
+
+
+  </style>
+</head>
+<body>
+  <ul class="flex-container">
+    <li class="flex-item"></li>
+    <li class="flex-item"></li>
+    <li class="flex-item"></li>
+    <li class="flex-item"></li>
+  </ul>
+</body>
+</html>
