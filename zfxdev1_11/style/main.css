@@ -164,7 +164,7 @@ nav .selected {
 .first-page .tag figure {
   float: left;
   width: 20%;
-  border-bottom: 0.2rem solid #dedede;
+  border-bottom: 0.3rem solid #dedede;
 }
 
 .first-page .tag img {
@@ -220,7 +220,7 @@ nav .selected {
   line-height: 12rem;
   font-size: 6rem;
   color: #626262;
-  border-bottom: 0.2rem solid #dedede;
+  border-bottom: 0.3rem solid #dedede;
   margin-bottom: 2.0%;
 }
 
