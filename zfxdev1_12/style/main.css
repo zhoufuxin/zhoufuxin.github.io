@@ -66,6 +66,7 @@ tbody tr:nth-child(3) {
   animation: bannerChange 6s;
   animation-iteration-count: infinite;
 
+  -webKit-animation: bannerChange 6s;
   -webKit-animation-iteration-count: infinite;
 }
 
