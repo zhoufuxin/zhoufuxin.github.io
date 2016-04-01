@@ -1,0 +1,140 @@
+html, body, div, ul, li, table, thead, tbody, tr, th, td, input, a {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  -moz-sizing: border-box;
+}
+
+table {
+  margin: 50px;
+  font-weight: bold;
+  text-align: left;
+}
+
+tr th + th, tr td + td {
+  margin-left: 2px;
+}
+
+thead th {
+  background-color: #000;
+  color: #fff;
+}
+
+tbody tr:nth-child(odd) td {
+  background-color: #fff;
+}
+
+tbody tr:nth-child(even) td {
+  background-color: #cdcdcd;
+}
+
+tbody tr:nth-child(1),
+tbody tr:nth-child(2),
+tbody tr:nth-child(3) {
+  color: #f00;
+}
+
+.text-edit {
+  margin: 50px;
+  width: 90px;
+  height: 22px;
+  border: 1px solid #ccc;
+
+  transition: width 1s;
+  -webkit-transition: width 1s;
+}
+
+.text-edit:focus {
+  width: 200px;
+}
+
+.banner {
+  margin: 50px;
+  position: relative;
+  width: 180px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.banner-content {
+  width: 540px;
+  position: relative;
+
+  animation: bannerChange 6s;
+  animation-iteration-count: infinite;
+
+  -webKit-animation-iteration-count: infinite;
+}
+
+.banner-content li {
+  float: left;
+  width: 180px;
+  height: 100px;
+}
+
+.banner-content li:nth-child(1) {
+  background-color: #f00;
+}
+
+.banner-content li:nth-child(2) {
+  background-color: #0f0;
+}
+
+.banner-content li:nth-child(3) {
+  background-color: #00f;
+}
+
+.banner-choose {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.banner-choose li {
+  float: left;
+  text-align: center;
+  margin-left: 2px;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  background-color: rgba(255,255,255,0.5);
+}
+
+.banner-choose li a {
+  display: block;
+}
+
+@keyframes bannerChoose {
+  0%    { background-color: rgba(255,255,255,0.5); }
+  100%  { background-color: rgba(255,255,255,1); }
+}
+
+@-webkit-keyframes bannerChoose {
+  0%    { background-color: rgba(255,255,255,0.5); }
+  100%  { background-color: rgba(255,255,255,1); }
+}
+
+.banner-choose li:active {
+  animation: bannerChoose 0.01s;
+  animation-fill-mode: forwards;
+
+  -webkit-animation: bannerChoose 0.01s;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes bannerChange {
+  0%   { left: 0;      }
+  33%  { left: -180px; }
+  66%  { left: -360px; }
+  100%  { left: 0; }
+}
+
+@-webkit-keyframes bannerChange {
+  0%   { left: 0;      }
+  33%  { left: -180px; }
+  66%  { left: -360px; }
+  100%  { left: 0; }
+}
