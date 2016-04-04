@@ -1,15 +1,25 @@
-html, body, div, header, footer, section, a, img, nav, span {
+html, body, div, header, footer, section, a, img, nav, span, h1, h2, h3, h4, h5, p, dl, dt, dd, br, ul, li, i, button, em, label, input, textarea, article {
   margin: 0;
   padding: 0;
   border: 0;
 
-  font: 14px "黑体";
+  font-size: 14px;
+  list-style: none;
 
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
 
-.clearfix:before, .clearfix:after {
+:focus {
+  outline: 0;
+}
+
+.combo, button, a {
+  cursor: pointer;
+}
+
+.clearfix:before,
+.clearfix:after {
   content: "";
   display: table;
 }
@@ -25,6 +35,8 @@ html, body, div, header, footer, section, a, img, nav, span {
 body {
   width: 100%;
   min-width: 1280px;
+
+  background-color: #f8f7f7;
 }
 
 a {
@@ -35,8 +47,9 @@ a {
 header {
   height: 57px;
   width: 100%;
-
   text-align: center;
+
+  background-color: #fff;
 }
 
 header > * {
@@ -56,7 +69,8 @@ nav a {
   color: #787b83;
 }
 
-nav .selected, nav a:hover {
+nav .selected,
+nav a:hover {
   border-bottom: 4px solid #e74f4d;
 }
 
@@ -72,6 +86,7 @@ nav .selected, nav a:hover {
 
 .logo span {
   font-size: 21px;
+  font-family: "黑体";
 }
 
 .user-login {
@@ -81,7 +96,8 @@ nav .selected, nav a:hover {
   margin-right: 63px;
 }
 
-.logo *, .user-login * {
+.logo *,
+.user-login * {
   vertical-align: middle;
 }
 
@@ -92,4 +108,470 @@ nav {
 .begin {
   width: 100%;
   height: 690px;
+  overflow: hidden;
+
+  background: url(../images/bg1.png) no-repeat;
+  background-size: 100%;
+}
+
+.begin * {
+  font-family: "微软雅黑";
+  color: #fff;
+}
+
+.begin h1 {
+  margin: 229px 0 0 9%;
+  font-size: 60px;
+  height: 50px;
+  line-height: 50px;
+
+}
+
+.begin p {
+  margin: 24px 0 0 9.5%;
+  font-size: 21px;
+  line-height: 33px;
+}
+
+.begin-btn {
+  margin: 60px 0 0 9.5%;
+  width: 332px;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  font-size: 30px;
+  display: block;
+  background-color: #e74f4d;
+}
+
+.introduce {
+  width: 100%;
+  height: 250px;
+  background-color: #fff;
+}
+
+.introduce dt,
+.introduce dd {
+  margin-top: 45px;
+  text-align: center;
+}
+
+.introduce dl {
+  float: left;
+  width: 25%;
+}
+
+.introduce dd {
+  height: 53px;
+}
+
+.introduce dl + dl dd {
+  border-left: 2px solid #989899;
+}
+
+.introduce dd p {
+  font-family: "黑体";
+  color: #767777;
+}
+
+.activity > .title {
+  text-align: center;
+  height: 361px;
+  background-color: #ededec;
+}
+
+.activity > .title img {
+  margin-top: 85px;
+  width: 100px;
+  height: 100px;
+}
+
+.activity > .title h1 {
+  margin-top: 44px;
+  font: 54px "黑体",sans-serif;
+  color: #323333;
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+
+.activity .search {
+  height: 340px;
+
+  padding-top: 52px;
+  background: url(../images/bg2.png) no-repeat;
+  background-size: 100%;
+}
+
+.activity .search > h1,
+.activity .search > p {
+  text-align: center;
+  color: #fff;
+  font-family: "微软雅黑";
+}
+
+.activity .search > h1 {
+  font-size: 21px;
+}
+
+.activity .search > p {
+  margin-top: 33px;
+  font-size: 12px;
+}
+
+.activity .search .search-area {
+  width: 1030px;
+  margin: 52px auto 0;
+}
+
+.activity .combo,
+.activity .search-btn {
+  width: 236px;
+  height: 34px;
+  float: left;
+}
+
+.activity .combo {
+  margin-right: 28px;
+  position: relative;
+  border:1px solid transparent;
+}
+
+.activity .combo-head {
+  height: 34px;
+  line-height: 34px;
+
+  position: relative;
+  background-color: #fff;
+}
+
+.activity .combo:hover {
+  border-top: 1px solid #c1776f;
+  border-left: 1px solid #c1776f;
+  border-right: 1px solid #c1776f; 
+}
+
+.activity .combo-head span {
+  display: block;
+  position: absolute;
+  padding-left: 5%;
+  width: 86%;
+
+  font: 12px "微软雅黑";
+  color: #a8aaaa;
+  line-height: 34px;
+}
+
+.activity .combo-head img {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  width: 8%;
+}
+
+.activity .search-btn {
+  color: #fff;
+  font-family: "微软雅黑";
+  background-color: #be4e48;
+  border:1px solid transparent;
+}
+
+.activity .combo ul {
+  display: none;
+
+  width: 236px;
+  margin-left: -1px;
+  border-left: 1px solid #c1776f;
+  border-right: 1px solid #c1776f;
+  border-bottom: 1px solid #c1776f;
+}
+
+.activity .combo:hover > ul {
+  display: block;
+}
+
+.activity .combo ul li {
+  background-color: #e4e3e5;
+  height: 26px;
+  line-height: 26px;
+}
+
+.activity .combo ul li i {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  vertical-align: middle;
+  font: 12px "微软雅黑";
+  color: #323333;
+}
+
+.activity .combo ul li:hover,
+.activity .combo ul .selected {
+  color: #fff;
+  background-color: #bf4f49;
+}
+
+.activity .combo ul .selected i {
+  background: url(../images/option_selected.png) no-repeat 6px 3px;
+}
+
+.activity .area {
+  padding-top: 100px;
+  margin: 0px auto;
+  width: 984px;
+  height: 606px;
+}
+
+.activity .area dl {
+  float: left;
+  width: 217px;
+  height: 390px;
+}
+
+.activity .area dl + dl {
+  margin-left: 38px;
+}
+
+.activity .area dl dt img {
+  width: 100%;
+  border: 1px solid #dadada;
+}
+
+.activity .area dl dd {
+  text-align: center;
+}
+
+.activity .area dl dd h1 {
+  margin: 8px 0;
+  height: 14px;
+  color: #323333;
+  font: 16px "微软雅黑";
+}
+
+.activity .area dl dd p {
+  color: #818181;
+  font: 14px "微软雅黑";
+}
+
+.activity .area .selected,
+.activity .area dl:hover {
+  position: relative;
+}
+
+.activity .area .selected dt,
+.activity .area dl:hover dt {
+  position: absolute;
+  bottom: 0;
+}
+
+.activity .area .selected dd h1,
+.activity .area dl:hover dd h1 {
+  font-size: 21px;
+  letter-spacing: 2em;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0 0 15px 0;
+}
+
+.activity > .detail {
+  height: 566px;
+}
+
+.activity > .detail > div {
+  float: left;
+}
+
+.activity > .detail .title {
+  width: 66.6%;
+  height: 100%;
+  background: url(../images/detail_title.png) no-repeat;
+  background-size: 100%;
+  color: #fff;
+  font-family: "微软雅黑";
+  text-align: center;
+}
+
+.activity > .detail .title h1 {
+  margin-top: 130px;
+  height: 22px;
+  font-size: 50px;
+  font-weight: normal;
+}
+
+.activity > .detail .title h2 {
+  height: 158px;
+  font-size: 158px;
+  font-weight: normal;
+}
+
+.activity > .detail .title h3 {
+  margin-top: 30px;
+  font-size: 22px;
+  line-height: 36px;
+  font-weight: normal;
+}
+
+.activity > .detail .title h4 {
+  font-size: 22px;
+  line-height: 36px;
+  font-weight: normal;
+}
+
+.activity > .detail .article {
+  height: 100%;
+  width: 33.3%;
+  text-align: center;
+  background-color: #fff;
+}
+
+.activity > .detail .article h1 {
+  margin: 160px 0 15px 0;
+  font: 21px "微软雅黑";
+}
+
+.activity > .detail .article h1 em {
+  font: normal 21px "微软雅黑";
+  color: #e7504d;
+}
+
+.activity > .detail .article p {
+  padding: 0 72px;
+  height: 162px;
+  font: 12px/30px "宋体";
+  color: #aaa;
+}
+
+.activity > .detail .article button {
+  width: 108px;
+  height: 33px;
+  color: #e87b7e;
+  border: 1px solid #e87b7e;
+  background-color: #fff;
+  font: 12px "微软雅黑";
+}
+
+.activity > .detail .article ul {
+  margin: 23px auto 0;
+  width: 76px;
+  height: 14px;
+}
+
+.activity > .detail .article ul li {
+  float: left;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #919292;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.activity > .detail .article ul li + li {
+  margin-left: 17px;
+}
+
+.activity > .detail .article ul .selected {
+  background-color: #919292;
+}
+
+.activity > .more > div {
+  width: 33.3%;
+  height: 520px;
+  float: left;
+}
+
+.more-1 {
+  background-color: #e74f4d;
+}
+
+.more-2 {
+  background-color: #fff;
+}
+
+.more-3 {
+  background: url(../images/more.png) no-repeat;
+  background-size: 100%;
+}
+
+.contact-us {
+  background-color: #32363e;
+  height: 416px;
+  text-align: center;
+  padding-top: 92px;
+}
+
+.contact-us > * {
+  display: inline-block;
+  width: 100%;
+}
+
+.contact-us h1 {
+  font: 21px "黑体";
+}
+
+.contact-us p {
+  margin-top: 5px;
+  font: 12px "宋体";
+}
+
+.contact-us h1,
+.contact-us p {
+  color: #e0e1e1;
+}
+
+.contact-us .submit {
+  height: 41px;
+  width: 512px;
+  border: 1px solid #65686e;
+  margin-top: 30px;
+}
+
+.contact-us .submit input {
+  width: 84%;
+  line-height: 41px;
+  height: 100%;
+  padding-left: 10px;
+}
+
+.contact-us .submit button {
+  width: 16%;
+  height: 100%;
+  background-color: #6f7278;
+
+  font: 15px "微软雅黑";
+  color: #fff;
+}
+
+.contact-us ul {
+  margin-top: 38px;
+}
+
+.contact-us ul li {
+  display: inline-block;
+}
+
+.contact-us ul li + li {
+  margin-left: 24px;
+}
+
+footer {
+  height: 58px;
+  background-color: #2f2f38;
+  position: relative;
+}
+
+footer a {
+  position: absolute;
+  top: 30px;
+  display: block;
+  color: #fff;
+  font-size: 12px;
+  font-family: "宋体";
+}
+
+footer a:first-child {
+  left: 100px;
+}
+
+footer a:last-child {
+  right: 30px;
 }
