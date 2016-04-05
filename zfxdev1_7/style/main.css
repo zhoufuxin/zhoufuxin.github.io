@@ -111,7 +111,7 @@ nav {
   overflow: hidden;
 
   background: url(../images/bg1.png) no-repeat;
-  background-size: 100%;
+  background-size: cover;
 }
 
 .begin * {
@@ -421,6 +421,18 @@ nav {
   width: 33.3%;
   text-align: center;
   background-color: #fff;
+  position: relative;
+}
+
+.activity > .detail .article:before{
+  content: '';
+  border-top:15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 20px solid #fff;
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+  left: -15px;
 }
 
 .activity > .detail .article h1 {
@@ -485,11 +497,210 @@ nav {
 
 .more-2 {
   background-color: #fff;
+  position: relative;
+}
+
+
+.more-2:after {
+  content: '';
+  border-top:15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 20px solid #fff;
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+  right: -15px;
 }
 
 .more-3 {
   background: url(../images/more.png) no-repeat;
   background-size: 100%;
+}
+
+.more-1,
+.more-2 {
+  text-align: center;
+  padding-top: 165px;
+}
+
+.more-1 *,
+.more-2 * {
+  font: 21px "黑体";
+}
+
+.more-1 h1,
+.more-2 h1 {
+  line-height: 32px;
+  margin-bottom: 17px;
+}
+
+.more-1 h1 {
+  color: #fff;
+}
+
+.more-2 h1 {
+  color: #323333;
+}
+
+.more-1 button,
+.more-2 button {
+  width: 172px;
+  height: 44px;
+  margin-top: 25px;
+  background-color: transparent;
+}
+
+.more-1 button {
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.more-2 button {
+  color: #e95b58;
+  border: 1px solid #e95b58;
+}
+
+.join-us {
+  text-align: center;
+  height: 750px;
+  padding-top: 117px;
+}
+
+.join-us .title h1 {
+  font: 21px "黑体";
+  color: #323333;
+  height: 50px;
+}
+
+.join-us .title p {
+  font: 12px "微软雅黑";
+  line-height: 15px;
+  color: #aaa;
+}
+
+.join-us .content {
+  margin: 107px 10% 0;
+}
+
+.join-us .content .rule,
+.join-us .content .fill-in {
+  float: left;
+}
+
+.join-us .content .rule {
+  width: 30%;
+  text-align: left;
+}
+
+.join-us .content .rule h1 {
+  font: 14px "黑体";
+  color: #231815;
+  margin: 6px 0;
+  height: 25px;
+  line-height: 25px;
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+}
+
+.join-us .content .rule h1 ~ h1 {
+  margin-top: 20px;
+}
+
+.join-us .content .rule p,
+.join-us .content .rule a {
+  font: 12px "宋体";
+  color: #231815;
+
+  filter: alpha(opacity=60);
+  opacity: 0.6;
+}
+
+.join-us .content .rule p {
+  margin: 10px 0 0 2px;
+  line-height: 20px;
+}
+
+.join-us .content .rule a {
+  position: relative;
+  width: 50px;
+  left: 84%;
+}
+
+.join-us .content .rule a i {
+  background: url(../images/down.png) no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+}
+
+.join-us .content .fill-in {
+  width: 65%;
+  margin-left: 5%;
+}
+
+.join-us .content .fill-in .input {
+  margin: 6px 9px;
+  position: relative;
+}
+
+.join-us .content .fill-in input,
+.join-us .content .fill-in textarea,
+.join-us .content .fill-in button {
+  width: 100%;
+  background-color: #ececee;
+}
+
+.join-us .content .fill-in input {
+  height: 40px;
+  padding-left: 50px;
+}
+
+
+#your-tell input,
+#your-address input {
+  padding-left: 70px;
+}
+
+.join-us .content .fill-in textarea {
+  height: 120px;
+  padding: 12px 0 12px 170px;
+  line-height: 16px;
+  resize: none;
+}
+
+.join-us .content .fill-in button {
+  height: 40px;
+  color: #323333;
+  font-size: 14px;
+  font-family: "黑体";
+}
+
+.join-us .content .fill-in .input label {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  height: 20px;
+
+  font: 12px "宋体";
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+  color: #231815;
+}
+
+
+.join-us .content .fill-in .col-md-1,
+.join-us .content .fill-in .col-md-2 {
+  float: left;
+}
+
+.join-us .content .fill-in .col-md-1 {
+  width: 100%;
+}
+
+.join-us .content .fill-in .col-md-2 {
+  width: 50%;
 }
 
 .contact-us {
