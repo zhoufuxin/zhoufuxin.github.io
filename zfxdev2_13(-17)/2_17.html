@@ -4,6 +4,57 @@
     <meta charset="utf-8">
     <title>IFE JavaScript Task 01</title>
     <script src="./js/2_17.js"></script>
+    <script src="./js/event.js"></script>
+    <style>
+
+    html, body, div, ul, li {
+      margin: 0;
+      border: 0;
+      padding: 0;
+
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+    }
+
+    .aqi-chart-wrap {
+      margin: 10px auto;
+      border-left: 1px solid #333;
+      border-bottom: 1px solid #333;
+
+      width: 1000px;
+      height: 600px;
+      
+    }
+
+    .aqi-chart-wrap ul {
+      height: 100%;
+      margin: 0 auto;
+    }
+
+    .aqi-chart-wrap ul li {
+      position: relative;
+      float: left;
+      height: 100%;
+      padding: 0 1px;
+      background-color: #fff;
+
+      /*
+      width: 10%;
+      */
+    }
+
+    .aqi-chart-wrap ul li div {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+
+      background-color: #288;
+      /*
+      height: 90%;
+      */
+    }
+
+    </style>
   </head>
 <body>
   <fieldset id="form-gra-time">
@@ -21,6 +72,11 @@
   </fieldset>
 
   <div class="aqi-chart-wrap">
+    <ul>
+    <!--
+      <li><div></div></li>
+    -->
+    </ul>
   </div>
 </body>
 </html>
