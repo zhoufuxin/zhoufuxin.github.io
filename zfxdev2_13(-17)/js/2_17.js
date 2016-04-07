@@ -83,9 +83,26 @@ function renderChart() {
       itemObj.setAttribute("title", date + "的空气质量: " + chartData.data[date]);
 
       itemProgress.style.height = chartData.data[date]/5 + "%";
+
+      var colorIndex = Math.floor( chartData.data[date] / ( 500 / getObjectLength(colorGroup) ) );
+      itemProgress.style.backgroundColor = colorGroup[colorIndex];
     }
   }
 }
+
+/**
+ * 颜色
+ */
+var colorGroup = [
+  "#00cf00",
+  "#007f00",
+  "#0000fd",
+  "#00007d",
+  "#f00000",
+  "#7f007f",
+  "#700000",
+  "#000000"
+]
 
 /**
  * 日、周、月的radio事件点击时的处理函数
@@ -93,125 +110,14 @@ function renderChart() {
 function graTimeChange() {
   // 确定是否选项发生了变化 
   console.log(this.value);
-
-  /*
-  var isNotChange = pageState.nowGraTime == this.value;
-  if (isNotChange) {
-    return;
-  } else {
-    pageState.nowGraTime = this.value;
-  }
-  */
   
   // 设置对应数据
-  var allData = {};
-  chartData.data = {};
-
   var citySelectObj = document.getElementById("city-select");
+  var city = citySelectObj.value
 
   pageState.nowGraTime = this.value;
-  allData = aqiSourceData[citySelectObj.value];
-  /*
-  var selectIndex = 0;
-  for (city in aqiSourceData) {
 
-    if (pageState.nowSelectCity == selectIndex) {
-
-      allData = aqiSourceData[city];
-    }
-
-    selectIndex++;
-  }
-  */
-
-  var dat = new Date("2016-01-01");
-
-
-  if (pageState.nowGraTime == "day") {
-
-    chartData.data = allData;
-
-  } else if (pageState.nowGraTime == "week") {
-
-    var daysIndex   = 1;
-    var weeksIndex  = 1;
-    var daysInWeek  = 1;
-    var isFullWeek  = false;
-    var sumOfWeek   = 0; 
-
-    for(date in allData) {
-
-      sumOfWeek += allData[date];
-
-      var week = new Date(date).getDay();
-
-      if ( week == 0 || daysIndex == 91) {
-
-        isFullWeek = true;
-
-      } else {
-
-        isFullWeek = false;
-
-      }
-
-      if (isFullWeek) {
-        chartData.data["第" + weeksIndex + "周"] = Math.floor(sumOfWeek / daysInWeek);
-        
-        sumOfWeek = 0;
-        daysInWeek = 0;
-        weeksIndex++;
-      }
-
-      daysIndex++;
-      daysInWeek++;
-    }
-
-
-  } else if (pageState.nowGraTime == "month") {
-
-    var daysIndex   = 1;
-    var monthsIndex  = 1;
-    var daysInMonth  = 1;
-    var isFullMonth  = false;
-    var sumOfMonth   = 0; 
-
-    for(date in allData) {
-
-      sumOfMonth += allData[date];
-
-      var today = new Date(date);
-      var nextDate = new Date(date);
-      nextDate.setDate(nextDate.getDate() + 1);
-
-      if ( nextDate.getDate() == 1 || daysIndex == 91) {
-
-        isFullMonth = true;
-
-      } else {
-
-        isFullMonth = false;
-
-      }
-
-      if (isFullMonth) {
-        chartData.data["第" + monthsIndex + "月"] = Math.floor(sumOfMonth / daysInMonth);
-        
-        sumOfMonth = 0;
-        daysInMonth = 0;
-        monthsIndex++;
-      }
-
-
-      daysIndex++;
-      daysInMonth++;
-    }
-
-  } else {
-    console.log("get radio value error");
-  }
-
-  chartData.count = getObjectLength(chartData.data);
+  setChartDataByPageState(pageState.nowGraTime, city);
 
   // 调用图表渲染函数
   renderChart();
@@ -225,7 +131,8 @@ function citySelectChange() {
   console.log(this.value);
 
   // 设置对应数据
-  chartData.data = aqiSourceData[this.value];
+  var city = this.value;
+  setChartDataByPageState(pageState.nowGraTime, city);
 
   // 调用图表渲染函数
   renderChart();
@@ -280,8 +187,7 @@ function initAqiChartData() {
 
   var city = citySelectObj.value;
 
-  chartData.count = getObjectLength(aqiSourceData[city]);
-  chartData.data = aqiSourceData[city];
+  setChartDataByPageState(pageState.nowGraTime, city);
 
   renderChart();
 }
@@ -302,6 +208,105 @@ function getObjectLength(obj) {
   return count;
 }
 
+/**
+ * 初始化函数
+ */
+function setChartDataByPageState(graTime, city) {
+
+  chartData.data = {};
+
+  var allData = aqiSourceData[city];
+
+  var dat = new Date("2016-01-01");
+
+  if (pageState.nowGraTime == "day") {
+
+    chartData.data = allData;
+
+  } else if (pageState.nowGraTime == "week") {
+
+    var daysIndex   = 1;
+    var weeksIndex  = 1;
+    var daysInWeek  = 1;
+    var isFullWeek  = false;
+    var sumOfWeek   = 0; 
+
+    for(date in allData) {
+
+      sumOfWeek += allData[date];
+
+      var week = new Date(date).getDay();
+
+      if ( week == 0 || daysIndex == 91) {
+
+        isFullWeek = true;
+
+      } else {
+
+        isFullWeek = false;
+
+      }
+
+      if (isFullWeek) {
+        console.log(daysInWeek + "天内aqi总量：" + sumOfWeek);
+        chartData.data["第" + weeksIndex + "周"] = Math.floor(sumOfWeek / daysInWeek);
+        
+        sumOfWeek = 0;
+        daysInWeek = 0;
+        weeksIndex++;
+      }
+
+      daysIndex++;
+      daysInWeek++;
+    }
+
+
+  } else if (pageState.nowGraTime == "month") {
+
+    var daysIndex   = 1;
+    var monthsIndex  = 1;
+    var daysInMonth  = 1;
+    var isFullMonth  = false;
+    var sumOfMonth   = 0; 
+
+    for(date in allData) {
+
+      sumOfMonth += allData[date];
+
+      var today = new Date(date);
+      var nextDate = new Date(date);
+      nextDate.setDate(nextDate.getDate() + 1);
+
+      if ( nextDate.getDate() == 1 || daysIndex == 91) {
+
+        isFullMonth = true;
+
+      } else {
+
+        isFullMonth = false;
+
+      }
+
+      if (isFullMonth) {
+        console.log(daysInMonth + "天内aqi总量：" + sumOfMonth);
+        chartData.data["第" + monthsIndex + "月"] = Math.floor(sumOfMonth / daysInMonth);
+
+        sumOfMonth = 0;
+        daysInMonth = 0;
+        monthsIndex++;
+      }
+
+
+      daysIndex++;
+      daysInMonth++;
+    }
+
+  } else {
+    console.log("get chartData data error");
+  }
+
+  chartData.count = getObjectLength(chartData.data);
+}
 
 /**
  * 初始化函数
