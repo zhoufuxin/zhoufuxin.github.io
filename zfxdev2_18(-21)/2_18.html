@@ -1,0 +1,151 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+    <script src="./js/event.js"></script>
+    <style>
+    html, body, div, ul, li {
+      padding: 0;
+      border: 0;
+
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+
+      list-style: none;
+    }
+
+    #list {
+      margin-top: 5px;
+    }
+
+    #list li {
+      float: left;
+      background-color: #f00;
+      color: #fff;
+      font-size: 14px;
+      padding: 5px;
+      margin-right: 5px;
+    }
+
+    </style>
+  </head>
+<body>
+  <div class="option">
+    <input id="number-input" type="text">
+    <button id="left-in-btn">左侧入</button>
+    <button id="right-in-btn">右侧入</button>
+    <button id="left-out-btn">左侧出</button>
+    <button id="right-out-btn">右侧出</button>
+  </div>
+
+  <ul id="list"></ul>
+
+  <script type="text/javascript">
+  (function(){
+
+    var leftInBtn = document.getElementById("left-in-btn");
+    eventUtil.addHandler(leftInBtn, "click", leftInHandler);
+
+    var rightInBtn = document.getElementById("right-in-btn");
+    eventUtil.addHandler(rightInBtn, "click", rightInHandler);
+
+    var leftOutBtn = document.getElementById("left-out-btn");
+    eventUtil.addHandler(leftOutBtn, "click", leftOutHandler);
+
+    var rightOutBtn = document.getElementById("right-out-btn");
+    eventUtil.addHandler(rightOutBtn, "click", rightOutHandler);
+
+
+    var ulObj = document.getElementById("list");
+    eventUtil.addHandler(ulObj, "click", listItemHandlers);
+
+  })();
+
+  function checkInputNumber(inputValue) {
+    return /^-?[0-9]+$/.test(inputValue);
+  }
+
+  function leftInHandler() {
+
+    var numberInput = document.getElementById("number-input");
+    var inputValue = numberInput.value;
+    
+    if (checkInputNumber(inputValue) == false) {
+      console.log(inputValue + " : input error!");
+      return;
+    }
+
+    var itemObj = document.createElement("li");
+    itemObj.innerHTML = inputValue;
+
+    var ulObj = document.getElementById("list");
+
+    if (ulObj.firstChild) {
+
+      ulObj.insertBefore(itemObj, ulObj.firstChild);
+
+    } else {
+
+      ulObj.appendChild(itemObj);
+
+    }
+
+  }
+
+  function rightInHandler() {
+
+    var numberInput = document.getElementById("number-input");
+    var inputValue = numberInput.value;
+    
+    if (checkInputNumber(inputValue) == false) {
+      console.log(inputValue + " : input error!");
+      return;
+    }
+
+    var itemObj = document.createElement("li");
+    itemObj.innerHTML = inputValue;
+
+    var ulObj = document.getElementById("list");
+    ulObj.appendChild(itemObj);
+
+  }
+
+  function leftOutHandler() {
+
+    var ulObj = document.getElementById("list");
+
+    if (ulObj.firstChild) {
+      var obj = ulObj.removeChild(ulObj.firstChild);
+      alert(obj.innerHTML);
+    }
+    
+  }
+
+  function rightOutHandler() {
+    
+    var ulObj = document.getElementById("list");
+
+    if (ulObj.lastChild) {
+      var obj = ulObj.removeChild(ulObj.lastChild);
+      alert(obj.innerHTML);
+    }
+
+  }
+
+  function listItemHandlers(event) {
+    
+    var e = eventUtil.getEvent(event);
+    var target = eventUtil.getElement(e);
+
+    var ulObj = document.getElementById("list");
+
+    if (target.nodeName.toUpperCase() == "LI") {
+      ulObj.removeChild(target);
+    }
+    
+  }
+
+  </script>
+</body>
+</html>
