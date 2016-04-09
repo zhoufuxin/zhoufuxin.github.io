@@ -1,0 +1,434 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>19</title>
+    <script src="./js/event.js"></script>
+    <style>
+    html, body, div, ul, li {
+      padding: 0;
+      border: 0;
+
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+
+      list-style: none;
+    }
+
+    #list {
+      margin-top: 5px;
+      height: 500px;
+
+      display: flex;
+      align-items: flex-end;
+    }
+
+    #list li {
+      float: left;
+      background-color: #f00;
+      color: #fff;
+      font-size: 12px;
+      margin-right: 5px;
+      width: 15px;
+      text-align: center;
+    }
+
+    @
+
+    </style>
+  </head>
+<body>
+  <div class="option">
+    <input id="number-input" type="text">
+    <button id="left-in-btn">左侧入</button>
+    <button id="right-in-btn">右侧入</button>
+    <button id="left-out-btn">左侧出</button>
+    <button id="right-out-btn">右侧出</button>
+    <button id="buttle-sort-btn">冒泡排序</button>
+    <button id="quick-sort-btn">快速排序</button>
+  </div>
+
+  <ul id="list"></ul>
+
+  <script type="text/javascript">
+
+  window.onload = function() {
+
+    loadData();
+
+    var leftInBtn = document.getElementById("left-in-btn");
+    eventUtil.addHandler(leftInBtn, "click", leftInHandler);
+
+    var rightInBtn = document.getElementById("right-in-btn");
+    eventUtil.addHandler(rightInBtn, "click", rightInHandler);
+
+    var leftOutBtn = document.getElementById("left-out-btn");
+    eventUtil.addHandler(leftOutBtn, "click", leftOutHandler);
+
+    var rightOutBtn = document.getElementById("right-out-btn");
+    eventUtil.addHandler(rightOutBtn, "click", rightOutHandler);
+
+    var bubbleSortBtn = document.getElementById("buttle-sort-btn");
+    eventUtil.addHandler(bubbleSortBtn, "click", bubbleSortHandler);
+
+    var quickSortBtn = document.getElementById("quick-sort-btn");
+    eventUtil.addHandler(quickSortBtn, "click", quickSortHandler);
+
+
+    var ulObj = document.getElementById("list");
+    eventUtil.addHandler(ulObj, "click", listItemHandlers);
+
+  }
+
+  function checkInputNumber(inputValue) {
+    return /^[0-9]+$/.test(inputValue) &&  10 <= inputValue && inputValue <= 100;
+  }
+
+  function leftInHandler() {
+
+    var numberInput = document.getElementById("number-input");
+    var inputValue = numberInput.value;
+    
+    if (checkInputNumber(inputValue) == false) {
+      console.log(inputValue + " : input error!");
+      return;
+    }
+
+    var ulObj = document.getElementById("list");
+
+    var itemCount = getListLength(ulObj);
+    if (itemCount && itemCount >= 60) {
+      alert("队列已满" + itemCount);
+      return;
+    }
+
+    var itemObj = createListItem(inputValue);
+    
+    if (itemObj) {
+
+      if (ulObj.firstChild) {
+
+        ulObj.insertBefore(itemObj, ulObj.firstChild);
+
+      } else {
+
+        ulObj.appendChild(itemObj);
+
+      }
+
+    }
+
+  }
+
+  function rightInHandler() {
+
+    var numberInput = document.getElementById("number-input");
+    var inputValue = numberInput.value;
+    
+    if (checkInputNumber(inputValue) == false) {
+      console.log(inputValue + " : input error!");
+      return;
+    }
+
+    var ulObj = document.getElementById("list");
+    
+    var itemCount = getListLength(ulObj);
+    if (itemCount && itemCount >= 60) {
+      alert("队列已满" + itemCount);
+      return;
+    }
+
+    var itemObj = createListItem(inputValue);
+
+    if (itemObj) {
+
+      ulObj.appendChild(itemObj);
+
+    }
+
+  }
+
+  function leftOutHandler() {
+
+    var ulObj = document.getElementById("list");
+
+    if (ulObj.firstChild) {
+      var obj = ulObj.removeChild(ulObj.firstChild);
+      alert(obj.innerHTML);
+    }
+    
+  }
+
+  function rightOutHandler() {
+    
+    var ulObj = document.getElementById("list");
+
+    if (ulObj.lastChild) {
+      var obj = ulObj.removeChild(ulObj.lastChild);
+      alert(obj.innerHTML);
+    }
+
+  }
+
+  var bubbleSort = bubbleSortByStep();
+  var timer = null;
+
+  function bubbleSortHandler() {
+
+    if (timer == null) {
+
+      timer = setInterval(bubbleSort, 10);
+
+    } else {
+
+      var res = confirm("Now running sort, do you want to stop?");
+
+      if (res == true) {
+
+        bubbleSort = bubbleSortByStep();
+
+      } else {
+
+      }
+
+    }
+    /*
+    var ulObj = document.getElementById("list");
+    var items = ulObj.getElementsByTagName("li");
+
+    for (var i = 0; i < items.length; i++) {
+
+      for (var j = 0; j < items.length - i - 1; j++) {
+
+        items[j].num = parseInt(items[j].innerHTML);
+        items[j+1].num = parseInt(items[j+1].innerHTML);
+
+        if (items[j].num > items[j+1].num) {
+
+          swapUI(ulObj, items[j], items[j+1]);
+
+        }
+
+      }
+    }
+    */
+  }
+
+  function bubbleSortByStep() {
+
+    var ulObj = document.getElementById("list");
+    var items = ulObj.getElementsByTagName("li");
+    var i = 0;
+    var j = 0;
+    var flag = 0;
+
+    function init() {
+      ulObj = document.getElementById("list");
+      items = ulObj.getElementsByTagName("li");
+      i = 0;
+      j = 0;
+      flag = 0;
+
+      clearInterval(timer);
+      timer = null;
+
+    };
+
+    init();
+
+    return function() {
+
+      while (i < items.length) {
+
+        while (j < items.length - i - 1) {
+
+          items[j].num = parseInt(items[j].innerHTML);
+          items[j+1].num = parseInt(items[j+1].innerHTML);
+
+          if (items[j].num > items[j+1].num) {
+
+            swapUI(ulObj, items[j], items[j+1]);
+            flag = 1;
+
+          }
+
+          
+          if (j + 1 == items.length - i - 1) { // 循环临界
+
+            j = 0;
+            break;
+
+          } else { // 单步执行的处理
+
+            j++;
+            return this;
+
+          }
+
+        }
+
+        // 冒泡排序优化，遍历一次如果位置没有发生改变，说明排序已经完成
+        if (flag == 0) {
+
+          break;
+
+        } else {
+
+          flag = 0;
+
+        }
+
+        if (i + 1 == items.length) { // 循环临界
+
+          break;
+
+        } else { // 单步执行的处理
+
+          i++;
+          return this;
+
+        }
+        
+      }
+
+      init();
+      alert("sort successed!");
+
+    }
+    
+  }
+
+  function quickSortHandler() {
+
+    var ulObj = document.getElementById("list");
+    var items = ulObj.getElementsByTagName("li");
+
+    function quickSort(startPos, endPos, keyPos) {
+
+      var i = startPos;
+      var j = endPos;
+
+      if (startPos >= endPos) {
+        return;
+      }
+
+      while (startPos < endPos) {
+
+        while (startPos < keyPos) {
+
+          if ( parseInt(items[startPos].innerHTML) > parseInt(items[keyPos].innerHTML) ) {
+
+            swapUI(ulObj, items[startPos], items[keyPos]);
+
+            keyPos = startPos;
+          }
+
+          startPos++;
+        }
+
+        while (keyPos < endPos) {
+
+          if ( parseInt(items[endPos].innerHTML) < parseInt(items[keyPos].innerHTML) ) {
+
+            swapUI(ulObj, items[keyPos], items[endPos]);
+
+            keyPos = endPos;
+          }
+
+          endPos--;
+        }
+
+      }
+
+      quickSort(i, keyPos-1, i);
+      quickSort(keyPos+1, j, keyPos+1);
+
+    }
+
+    
+    quickSort(0, items.length-1, 0);
+
+  }
+
+  function swapUI(list, item1, item2) {
+
+    var temp = item1.cloneNode();
+    list.insertBefore(temp, item1);
+    list.insertBefore(item1, item2);
+    list.insertBefore(item2, temp);
+    list.removeChild(temp);
+
+  }
+
+  function listItemHandlers(event) {
+    
+    var e = eventUtil.getEvent(event);
+    var target = eventUtil.getElement(e);
+
+    var ulObj = document.getElementById("list");
+
+    if (target.nodeName.toUpperCase() == "LI") {
+      ulObj.removeChild(target);
+    }
+    
+  }
+
+  function getListLength(listObj) {
+    return itemCount = listObj.getElementsByTagName('li').length;
+  }
+
+  /**
+   * 颜色
+   */
+  var colorGroup = [
+    "#00cf00",
+    "#007f00",
+    "#0000fd",
+    "#00007d",
+    "#f00000",
+    "#7f007f",
+    "#700000",
+    "#000000"
+  ];
+
+  /**
+   * 获取对象长度
+   */
+  function getObjectLength(obj) {
+
+    var count = 0;
+
+    for (iter in obj) {
+
+      count ++;
+    }
+
+    return count;
+  }
+
+  function createListItem(value) {
+
+    var itemObj = document.createElement("li");
+    itemObj.innerHTML = value;
+    itemObj.style.height = value + "%";
+
+    var colorIndex = Math.floor( value / ( 101 / getObjectLength(colorGroup) ) );
+    itemObj.style.backgroundColor = colorGroup[colorIndex];
+
+    return itemObj;
+  }
+
+  function loadData() {
+
+    var ulObj = document.getElementById("list");
+
+    for (var i = 0; i < 50; i++) {
+      var itemObj = createListItem(Math.floor( Math.random() * 91 ) + 10);
+      ulObj.appendChild(itemObj);
+    }
+
+  }
+
+</script>
+</body>
+</html>
