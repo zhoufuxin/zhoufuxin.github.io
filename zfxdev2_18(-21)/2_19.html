@@ -299,7 +299,7 @@
   }
 
   function quickSortHandler() {
-
+    
     var ulObj = document.getElementById("list");
     var items = ulObj.getElementsByTagName("li");
 
@@ -321,6 +321,7 @@
             swapUI(ulObj, items[startPos], items[keyPos]);
 
             keyPos = startPos;
+            break;
           }
 
           startPos++;
@@ -333,6 +334,7 @@
             swapUI(ulObj, items[keyPos], items[endPos]);
 
             keyPos = endPos;
+            break;
           }
 
           endPos--;
@@ -345,7 +347,6 @@
 
     }
 
-    
     quickSort(0, items.length-1, 0);
 
   }
