@@ -1,0 +1,192 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>20</title>
+    <script src="./js/event.js"></script>
+    <style>
+    html, body, div, ul, li {
+      padding: 0;
+      border: 0;
+
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+
+      list-style: none;
+    }
+
+    #list {
+      margin-top: 5px;
+    }
+
+    #list li {
+      float: left;
+      background-color: #f00;
+      color: #fff;
+      font-size: 14px;
+      padding: 5px;
+      margin: 5px;
+    }
+
+    #list .match {
+      color: #00f;
+    }
+
+    </style>
+  </head>
+<body>
+  <div class="option">
+    <textarea id="input"></textarea>
+    <button id="left-in-btn">左侧入</button>
+    <button id="right-in-btn">右侧入</button>
+    <button id="left-out-btn">左侧出</button>
+    <button id="right-out-btn">右侧出</button>
+    <input id="find-input" type="text">
+    <button id="find-btn">查询</button>
+  </div>
+
+  <ul id="list"></ul>
+
+  <script type="text/javascript">
+  (function(){
+
+    var leftInBtn = document.getElementById("left-in-btn");
+    eventUtil.addHandler(leftInBtn, "click", leftInHandler);
+
+    var rightInBtn = document.getElementById("right-in-btn");
+    eventUtil.addHandler(rightInBtn, "click", rightInHandler);
+
+    var leftOutBtn = document.getElementById("left-out-btn");
+    eventUtil.addHandler(leftOutBtn, "click", leftOutHandler);
+
+    var rightOutBtn = document.getElementById("right-out-btn");
+    eventUtil.addHandler(rightOutBtn, "click", rightOutHandler);
+
+    var findBtn = document.getElementById("find-btn");
+    eventUtil.addHandler(findBtn, "click", findHandler);
+
+    var ulObj = document.getElementById("list");
+    eventUtil.addHandler(ulObj, "click", listItemHandlers);
+
+  })();
+
+  function checkInputNumber(inputValue) {
+    return /^-?[0-9]+$/.test(inputValue);
+  }
+
+  function checkInputNumberWord(inputValue) {
+    return /^[0-9\u4e00-\u9fa5a-zA-Z]+$/.test(inputValue);
+  }
+
+  function leftInHandler() {
+
+    var numberInput = document.getElementById("input");
+    var inputValue = numberInput.value.trim();
+
+    console.log(inputValue);
+    var array = inputValue.split(/[^0-9\u4e00-\u9fa5a-zA-Z]+/);
+    console.log(array);
+
+    for (var i = array.length - 1; i >= 0; i--) {
+      if (array[i]) {
+        var itemObj = document.createElement("li");
+        itemObj.innerHTML = array[i];
+
+        var ulObj = document.getElementById("list");
+
+        if (ulObj.firstChild) {
+          ulObj.insertBefore(itemObj, ulObj.firstChild);
+        } else {
+          ulObj.appendChild(itemObj);
+        }
+      }
+    }
+  }
+
+  function rightInHandler() {
+
+    var numberInput = document.getElementById("input");
+    var inputValue = numberInput.value.trim();
+    
+    console.log(inputValue);
+    var array = inputValue.split(/[^0-9\u4e00-\u9fa5a-zA-Z]+/);
+    console.log(array);
+
+    for (var i = 0; i < array.length; i++) {
+      if (array[i]) {
+        var itemObj = document.createElement("li");
+        itemObj.innerHTML = array[i];
+
+        var ulObj = document.getElementById("list");
+        ulObj.appendChild(itemObj);
+      }
+    }
+  }
+
+  function leftOutHandler() {
+
+    var ulObj = document.getElementById("list");
+
+    if (ulObj.firstChild) {
+      var obj = ulObj.removeChild(ulObj.firstChild);
+      alert(obj.innerHTML);
+    }
+  }
+
+  function rightOutHandler() {
+    
+    var ulObj = document.getElementById("list");
+
+    if (ulObj.lastChild) {
+      var obj = ulObj.removeChild(ulObj.lastChild);
+      alert(obj.innerHTML);
+    }
+  }
+
+  function listItemHandlers(event) {
+    
+    var e = eventUtil.getEvent(event);
+    var target = eventUtil.getElement(e);
+    var ulObj = document.getElementById("list");
+
+    if (target.nodeName.toUpperCase() == "LI") {
+      ulObj.removeChild(target);
+    }
+  }
+
+  function findHandler() {
+
+    var testStr = "   zifu+ zifu zifu + 字符* 字符2 22@#￥+ @#@ a ";
+
+    var ulObj = document.getElementById("list");
+    var items = ulObj.getElementsByTagName("li");
+
+    var findKeyValue = document.getElementById("find-input").value;
+    var found = false;
+
+    for (var i = 0; i < items.length; i++) {
+      var matchPos = items[i].innerHTML.indexOf(findKeyValue);
+
+      if (matchPos >= 0) {
+        if (items[i].className) {
+          if (items[i].className.indexOf("match") < 0) {
+            items[i].className += " match";
+          }
+        } else {
+          items[i].className = "match";
+        }
+
+        found = true;
+      } else {
+        items[i].className = items[i].className.replace("match", "");
+      }
+
+    }
+    if (!found) {
+      alert("have not " + findKeyValue + " in the list");
+    }
+  }
+
+  </script>
+</body>
+</html>

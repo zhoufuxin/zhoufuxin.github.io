@@ -1,0 +1,236 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>21</title>
+    <script src="./js/event.js"></script>
+    <style>
+    html, body, div, ul, li {
+      padding: 0;
+      border: 0;
+
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+
+      list-style: none;
+    }
+
+    div {
+      overflow: hidden;
+    }
+
+    .list {
+      margin-top: 5px;
+    }
+
+    .list li {
+      float: left;
+      color: #fff;
+      font-size: 14px;
+      padding: 5px;
+      margin: 5px;
+    }
+
+    .list .match {
+      color: #00f;
+    }
+
+    #tag-list li {
+      background-color: #82c7fe;
+    }
+
+    #interest-list li {
+      background-color: #fdd08d;
+    }
+
+    #interest-input {
+      width: 200px;
+      height: 100px;
+    }
+
+    #interest-btn {
+      display: block;
+      margin-top: 5px;
+      height: 25px;
+      text-align: center;
+      border-radius: 5px;
+      border:1px solid #aaa;
+      background-color: #fff;
+    }
+
+    </style>
+  </head>
+<body>
+  <div>
+    <label>Tag:</label><input id="tag-input" type="text">
+    <ul id="tag-list" class="list"><li>aaa</li><li>aa1a</li><li>a11aa</li></ul>
+  </div>
+
+  <div>
+    <textarea id="interest-input"></textarea>
+    <button id="interest-btn">确认兴趣爱好</button>
+    <ul id="interest-list" class="list"><li>aaa1111</li><li>aa11a1</li></ul>
+  </div>
+  <script type="text/javascript">
+
+  (function(){
+
+    var tagUlObj = document.getElementById("tag-list");
+    var interestUlObj = document.getElementById("interest-list");
+
+    eventUtil.addHandler(tagUlObj, "click", listItemHandlers);
+    eventUtil.addHandler(tagUlObj, "mouseover", listItemHandlers);
+    eventUtil.addHandler(tagUlObj, "mouseout", listItemHandlers);
+
+    var tagInputObj = document.getElementById("tag-input");
+    var interestInputObj = document.getElementById("interest-input");
+
+    eventUtil.addHandler(tagInputObj, "input", function() {
+      var value = tagInputObj.value;
+      if (value && /[\s\,\，]/.test(value.charAt(value.length-1)) ) {
+        insertNewNode(tagUlObj, value.substr(0, value.length-1));
+        tagInputObj.value = "";
+      }
+    });
+
+    eventUtil.addHandler(tagInputObj, "keydown", function(event) {
+      var value = tagInputObj.value;
+      var e = eventUtil.getEvent(event);
+      if (e.keyCode == 13) {
+        insertNewNode(tagUlObj, value);
+        tagInputObj.value = "";
+      };
+    });
+
+    var interestBtn = document.getElementById("interest-btn");
+    eventUtil.addHandler(interestBtn, "click", function() {
+      var array = getInputValue(interestInputObj).split(/[^0-9\u4e00-\u9fa5a-zA-Z]+/);
+      for(var i = 0; i < array.length; i++) {
+        if (array[i]) {
+          insertNewNode(interestUlObj, array[i]);
+        }
+      }
+    });
+
+  })();
+
+  function insertNewNode(list, value) {
+
+    if (!matchListItem(list, value, true)) {
+
+      if (list.childNodes && list.childNodes.length >= 10) {
+        leftOut(list);
+      } 
+
+      rightIn(list, value);
+
+    } else { console.log(value + " is exist!!!"); }
+
+  }
+
+  function getInputValue(inputObj) {
+
+    if (inputObj && inputObj.value) {
+      return inputObj.value.trim();
+    } else {
+      return "";
+    }
+  }
+
+  function leftIn(list, value) {
+
+    if (list && value) {
+      var itemObj = document.createElement("li");
+      itemObj.innerHTML = value;
+
+      if (list.firstChild) {
+        list.insertBefore(itemObj, list.firstChild);
+      } else {
+        list.appendChild(itemObj);
+      }
+    }
+  }
+
+  function rightIn(list, value) {
+
+    if (list && value) {
+      var itemObj = document.createElement("li");
+      itemObj.innerHTML = value;
+
+      list.appendChild(itemObj);
+    }
+  }
+
+  function leftOut(list) {
+
+    if (list.firstChild) {
+      list.removeChild(list.firstChild);
+    }
+  }
+
+  function rightOut(list) {
+
+    if (list.lastChild) {
+      list.removeChild(list.lastChild);
+    }
+  }
+
+  function matchListItem(list, findItemValue, isStrict) {
+
+    var items = list.getElementsByTagName("li");
+    var isMatch = false;
+
+    for (var i = 0; i < items.length; i++) {
+
+      if (isStrict) {
+        if (items[i].innerHTML == findItemValue) {
+          isMatch = true;
+          break;
+        }
+      } else {
+        var matchPos = items[i].innerHTML.indexOf(findItemValue);
+        if (matchPos >= 0) {
+          isMatch = true;
+          break;
+        }
+      }
+    }
+    
+    return isMatch;
+  }
+
+  function listItemHandlers(event) {
+
+    var e = eventUtil.getEvent(event);
+    var target = eventUtil.getElement(e);
+    var ulObj = this;
+
+    if (target.nodeName.toUpperCase() == "LI") {
+
+      switch(e.type) {
+
+        case "click"      : 
+          ulObj.removeChild(target); 
+          break;
+
+        case "mouseover"  : 
+          target.innerHTML = "点击删除" + target.innerHTML;
+          target.style.backgroundColor = "#f00";
+          break;
+
+        case "mouseout"   : 
+          target.innerHTML = target.innerHTML.replace("点击删除", "");
+          target.style.backgroundColor = "#82c7fe";
+          break;
+
+        default           : 
+          console.log(e.type);
+          break;
+      }
+      
+    }
+  }
+
+  </script>
+</body>
+</html>

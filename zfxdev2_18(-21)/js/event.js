@@ -1,5 +1,16 @@
 var eventUtil = {
 	addHandler : function(element, type, handler) {
+		if (type == "input") {
+			if (element.addEventListener) {
+				element.addEventListener(type, handler, false);
+			} else if (element.attachEvent) {
+				element.attachEvent('onpropertychange', handler);
+			} else {
+				element['onpropertychange'] = handler;
+			}
+			return;
+		}
+
 		if (element.addEventListener) {
 			element.addEventListener(type, handler, false);
 		} else if (element.attachEvent) {
@@ -9,6 +20,17 @@ var eventUtil = {
 		}
 	},
 	removeHandler : function(element, type, handler) {
+		if (type == "input") {
+			if (element.removeEventListener) {
+				element.removeEventListener(type, handler, false);
+			} else if (element.detachEvent) {
+				element.detachEvent('onpropertychange', handler);
+			} else {
+				element['onpropertychange'] = null;
+			}
+			return;
+		}
+
 		if (element.removeEventListener) {
 			element.removeEventListener(type, handler, false);
 		} else if (element.detachEvent) {

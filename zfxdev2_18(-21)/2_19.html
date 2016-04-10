@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>19</title>
     <script src="./js/event.js"></script>
+    <script src="./js/Concurrent.Thread.js"></script>
     <style>
     html, body, div, ul, li {
       padding: 0;
@@ -32,8 +33,6 @@
       width: 15px;
       text-align: center;
     }
-
-    @
 
     </style>
   </head>
@@ -299,56 +298,79 @@
   }
 
   function quickSortHandler() {
+
+    Concurrent.Thread.create(function() {
+    //(function() {
+
+      var ulObj = document.getElementById("list");
+      var items = ulObj.getElementsByTagName("li");
+
+      function quickSort(startPos, endPos, keyPos) {
+
+        var i = startPos;
+        var j = endPos;
+
+        if (startPos >= endPos) {
+          return;
+        }
+
+        while (startPos < endPos) {
+
+          while (startPos < keyPos) {
+            var now = new Date();
+            while (true) {
+              var pass = new Date();
+              if (pass-now > 30) {
+                break;
+              }
+            }
+
+            if ( parseInt(items[startPos].innerHTML) > parseInt(items[keyPos].innerHTML) ) {
+
+              swapUI(ulObj, items[startPos], items[keyPos]);
+
+              keyPos = startPos;
+              break;
+            }
+
+            startPos++;
+          }
+
+          while (keyPos < endPos) {
+
+            var now = new Date();
+            while (true) {
+              var pass = new Date();
+              if (pass-now > 30) {
+                break;
+              }
+            }
+
+            if ( parseInt(items[endPos].innerHTML) < parseInt(items[keyPos].innerHTML) ) {
+
+              swapUI(ulObj, items[keyPos], items[endPos]);
+
+              keyPos = endPos;
+              break;
+            }
+
+            endPos--;
+          }
+
+        }
+
+        quickSort(i, keyPos-1, i);
+        quickSort(keyPos+1, j, keyPos+1);
+
+      }
+
+      quickSort(0, items.length-1, 0);
+      alert("quick sort finish!!!");
+      Concurrent.Thread.stop();
+
+    });
+    //})();
     
-    var ulObj = document.getElementById("list");
-    var items = ulObj.getElementsByTagName("li");
-
-    function quickSort(startPos, endPos, keyPos) {
-
-      var i = startPos;
-      var j = endPos;
-
-      if (startPos >= endPos) {
-        return;
-      }
-
-      while (startPos < endPos) {
-
-        while (startPos < keyPos) {
-
-          if ( parseInt(items[startPos].innerHTML) > parseInt(items[keyPos].innerHTML) ) {
-
-            swapUI(ulObj, items[startPos], items[keyPos]);
-
-            keyPos = startPos;
-            break;
-          }
-
-          startPos++;
-        }
-
-        while (keyPos < endPos) {
-
-          if ( parseInt(items[endPos].innerHTML) < parseInt(items[keyPos].innerHTML) ) {
-
-            swapUI(ulObj, items[keyPos], items[endPos]);
-
-            keyPos = endPos;
-            break;
-          }
-
-          endPos--;
-        }
-
-      }
-
-      quickSort(i, keyPos-1, i);
-      quickSort(keyPos+1, j, keyPos+1);
-
-    }
-
-    quickSort(0, items.length-1, 0);
-
   }
 
   function swapUI(list, item1, item2) {
@@ -399,9 +421,22 @@
 
     var count = 0;
 
-    for (iter in obj) {
+    for (objIn in obj) {
 
       count ++;
+    }
+
+    return count;
+  }
+
+  function getPropertyCount(obj) {
+
+    var iter, count = 0;
+    
+    for (iter in obj) {
+      if (obj.hasOwnProperty(iter)) {
+        count++;
+      }
     }
 
     return count;
@@ -413,7 +448,7 @@
     itemObj.innerHTML = value;
     itemObj.style.height = value + "%";
 
-    var colorIndex = Math.floor( value / ( 101 / getObjectLength(colorGroup) ) );
+    var colorIndex = Math.floor( value / ( 101 / getPropertyCount(colorGroup) ) );
     itemObj.style.backgroundColor = colorGroup[colorIndex];
 
     return itemObj;
