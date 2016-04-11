@@ -77,27 +77,99 @@
     </div>
   </div>
 
+  <button id="preOrderBtn">先序遍历</button>
+  <button id="inOrderBtn">中序遍历</button>
+  <button id="postOrderBtn">后序遍历</button>
+  <label>单步时间</label><input id="time" type="text" value="300">
+
   <script>
 
   window.onload = function() {
 
-    var rootObj = document.getElementById("root");
+    var rootObj       = document.getElementById("root");
 
-    var selectNode = function(obj) {
-      var className = "select-node";
-      var nodes = document.getElementsByTagName("div");
-      for (var i = 0 ; i < nodes.length; i++) {
-        removeClass(nodes[i], className);
-      }
-      addClass(obj, className);
-    }
+    var preOrderBtn   = document.getElementById("preOrderBtn");
+    var inOrderBtn    = document.getElementById("inOrderBtn");
+    var postOrderBtn  = document.getElementById("postOrderBtn");
 
+    var timeInput     = document.getElementById("time");
 
+    eventUtil.addHandler(preOrderBtn, "click", function() {
+      tree.init();
+      tree.preOrder(rootObj);
+      tree.animation( /^[1-9]+[0-9]*$/.test(timeInput.value.trim()) ? timeInput.value : 500 );
+    });
+
+    eventUtil.addHandler(inOrderBtn, "click", function() {
+      tree.init();
+      tree.inOrder(rootObj);
+      tree.animation( /^[1-9]+[0-9]*$/.test(timeInput.value.trim()) ? timeInput.value : 500 );
+    });
+
+    eventUtil.addHandler(postOrderBtn, "click", function() {
+      tree.init();
+      tree.postOrder(rootObj);
+      tree.animation( /^[1-9]+[0-9]*$/.test(timeInput.value.trim()) ? timeInput.value : 500 );
+    });
 
   }
 
-  function preOrder(root) {
-    
+  function selectNode(obj) {
+    var className = "select-node";
+    var nodes = document.getElementsByTagName("div");
+    for (var i = 0 ; i < nodes.length; i++) {
+      removeClass(nodes[i], className);
+    }
+    addClass(obj, className);
+  }
+
+  function finishCallbackFunc(stepList) {
+  }
+
+  var tree = {
+    stepList: [],
+    init: function() {
+      this.stepList = [];
+    }
+  }
+
+  tree.animation = function(time) {
+    var showStep = this.stepList;
+    var index = 0;
+    var timer = setInterval(function(){
+      if (index >= showStep.length) {
+        clearInterval(timer);
+        console.log(showStep);
+        return;
+      } else {
+        selectNode(showStep[index]);
+        index++;
+      }
+    }, time)
+  }
+
+  tree.preOrder = function(node) {
+    if (node) {
+      this.stepList.push(node);
+      this.preOrder(node.firstElementChild);
+      this.preOrder(node.lastElementChild);
+    }
+  }
+
+  tree.inOrder = function(node) {
+    if (node) {
+      this.inOrder(node.firstElementChild);
+      this.stepList.push(node);
+      this.inOrder(node.lastElementChild);
+    }
+  }
+
+  tree.postOrder = function(node) {
+    if (node) {
+      this.postOrder(node.firstElementChild);
+      this.postOrder(node.lastElementChild);
+      this.stepList.push(node);
+    }
   }
 
   function addClass(obj, className) {
