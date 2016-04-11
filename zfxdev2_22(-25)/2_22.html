@@ -1,0 +1,118 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>22</title>
+    <script src="./js/event.js"></script>
+    <style>
+    html, body, div, ul, li {
+      padding: 0;
+      border: 0;
+
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+
+      list-style: none;
+    }
+
+    div {
+      display: flex;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #000;
+      justify-content: center;
+    }
+
+    .root {
+      width: 1000px;
+    }
+
+    .lchild1,
+    .rchild1,
+    .lchild2,
+    .rchild2,
+    .lchild3,
+    .rchild3 {
+      width: 50%;
+    }
+
+    div {
+      background-color: #fff;
+    }
+
+    .select-node {
+      background-color: red;
+    }
+
+    </style>
+  </head>
+<body>
+  <div id="root" class="root">
+    <div class="lchild1">
+      <div class="lchild2">
+        <div class="lchild3">l3</div>
+        l2
+        <div class="rchild3">r3</div>
+      </div>
+      l1
+      <div class="rchild2">
+        <div class="lchild3">l3</div>
+        r2
+        <div class="rchild3">r3</div>
+      </div>
+    </div>
+    root
+    <div class="rchild1">
+      <div class="lchild2">
+        <div class="lchild3">l3</div>
+        l2
+        <div class="rchild3">r3</div>
+      </div>
+      r1
+      <div class="rchild2">
+        <div class="lchild3">l3</div>
+        r2
+        <div class="rchild3">r3</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+  window.onload = function() {
+
+    var rootObj = document.getElementById("root");
+
+    var selectNode = function(obj) {
+      var className = "select-node";
+      var nodes = document.getElementsByTagName("div");
+      for (var i = 0 ; i < nodes.length; i++) {
+        removeClass(nodes[i], className);
+      }
+      addClass(obj, className);
+    }
+
+
+
+  }
+
+  function preOrder(root) {
+    
+  }
+
+  function addClass(obj, className) {
+
+    if (obj) {
+      obj.className += " " + className;
+    }
+  }
+
+  function removeClass(obj, className) {
+
+    if (obj && obj.className) {
+      obj.className = obj.className.replace(className, "");
+    }
+  }
+  </script>
+</body>
+</html>
