@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>23</title>
+    <title>24</title>
     <script src="./js/event.js"></script>
     <style>
     html, body, div, ul, li {
@@ -27,10 +27,7 @@
     .root {
     }
 
-    .one,
-    .two,
-    .three,
-    .four {
+    .root div {
       height: 45%;
     }
 
@@ -52,6 +49,14 @@
 
     .find-node {
       background-color: yellow;
+    }
+
+    .option {
+      padding: 10px;
+    }
+
+    .option button {
+      margin: 0 10px;
     }
 
     </style>
@@ -96,12 +101,22 @@
     </div>
   </div>
 
-  <button id="traverse-df-btn">深度优先</button>
-  <button id="traverse-bf-btn">广度优先</button>
-  <label>单步时间</label><input id="time-input" type="text" value="300">
-  <label>查找关键字</label><input id="search-input" type="text" value="three9">
-  <button id="traverse-df-search-btn">深度优先查询</button>
-  <button id="traverse-bf-search-btn">广度优先查询</button>
+  <div class="option">
+    <label>单步时间</label><input id="time-input" type="text" value="300">
+    <button id="traverse-df-btn">深度优先</button>
+    <button id="traverse-bf-btn">广度优先</button>
+    <label>查找关键字</label><input id="search-input" type="text" value="three9">
+    <button id="traverse-df-search-btn">深度优先查询</button>
+    <button id="traverse-bf-search-btn">广度优先查询</button>    
+  </div>
+
+  <div class="option">
+    <label>新节点名称</label><input id="new-node-input" type="text" value="new">
+    <button id="add-btn">在选中的节点中插入新节点</button>
+    <button id="remove-btn">删除选中节点</button>
+  </div>
+  
+
 
   <script>
 
@@ -109,15 +124,18 @@
 
     var rootObj       = document.getElementById("root");
 
-    var traverseDfBtn   = document.getElementById("traverse-df-btn");
-    var traverseBfBtn    = document.getElementById("traverse-bf-btn");
+    var traverseDfBtn = document.getElementById("traverse-df-btn");
+    var traverseBfBtn = document.getElementById("traverse-bf-btn");
 
     var timeInput     = document.getElementById("time-input");
 
     var searchInput   = document.getElementById("search-input");
-    var dfSearchBtn     = document.getElementById("traverse-df-search-btn");
-    var bfSearchBtn     = document.getElementById("traverse-bf-search-btn");
+    var dfSearchBtn   = document.getElementById("traverse-df-search-btn");
+    var bfSearchBtn   = document.getElementById("traverse-bf-search-btn");
 
+    var newNodeInput  = document.getElementById("new-node-input");
+    var addBtn        = document.getElementById("add-btn");
+    var removeBtn     = document.getElementById("remove-btn");
 
     eventUtil.addHandler(traverseDfBtn, "click", function() {
       tree.init();
@@ -143,7 +161,43 @@
       tree.animation( /^[1-9]+[0-9]*$/.test(timeInput.value.trim()) ? timeInput.value : 500, searchInput.value.trim() );
     });
 
+    eventUtil.addHandler(rootObj, "click", function(e) {
+      var e = eventUtil.getEvent(e);
+      var targetEle = eventUtil.getElement(e);
+      if (targetEle.nodeName.toUpperCase() == "DIV") {
+        currentSelectNode = targetEle;
+      } else if (targetEle.parentNode && targetEle.parentNode.nodeName.toUpperCase() == "DIV") {
+        currentSelectNode = targetEle.parentNode;
+      }
+      selectNode(currentSelectNode);
+    });
+
+    eventUtil.addHandler(addBtn, "click", function() {
+      addNode(currentSelectNode, newNodeInput.value.trim());
+    });
+
+    eventUtil.addHandler(removeBtn, "click", function() {
+      removeNode(currentSelectNode);
+    });
+
   }
+
+  function addNode(parent, newNodeValue) {
+    var newNode = document.createElement("div");
+    var newNodeTitle = document.createElement("h1");
+    newNodeTitle.innerHTML = newNodeValue;
+    newNode.appendChild(newNodeTitle);
+
+    parent.appendChild(newNode);
+  }
+
+  function removeNode(node) {
+    if (node) {
+      node.remove();
+    }
+  }
+
+  var currentSelectNode = null;
 
   function selectNode(obj) {
     var className = "select-node";
@@ -257,21 +311,18 @@
   }
 
   tree.animation = function(time, find) {
-    var found = false;
     var showStep = this.stepList;
     var index = 0;
     var timer = setInterval(function(){
       if (index >= showStep.length) {
         clearInterval(timer);
         console.log(showStep);
-        if(find && !found) { alert("The tree has not this node!"); }
         return;
       } else {
         selectNode(showStep[index]);
         if (find) {
           if (find == getNodeValue(showStep[index])) {
             showStep[index].style.backgroundColor = "#ff0";
-            found = true;
           }
         }
         index++;
@@ -290,6 +341,7 @@
 
     if (obj && obj.className) {
       obj.className = obj.className.replace(className, "");
+      obj.className = obj.className.trim();
     }
   }
   </script>
