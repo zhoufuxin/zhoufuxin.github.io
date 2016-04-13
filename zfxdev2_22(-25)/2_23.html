@@ -50,6 +50,10 @@
       background-color: red;
     }
 
+    .find-node {
+      background-color: yellow;
+    }
+
     </style>
   </head>
 <body>
@@ -96,7 +100,8 @@
   <button id="traverse-bf-btn">广度优先</button>
   <label>单步时间</label><input id="time-input" type="text" value="300">
   <label>查找关键字</label><input id="search-input" type="text" value="three9">
-  <button id="search-btn">查询</button>
+  <button id="traverse-df-search-btn">深度优先查询</button>
+  <button id="traverse-bf-search-btn">广度优先查询</button>
 
   <script>
 
@@ -110,20 +115,32 @@
     var timeInput     = document.getElementById("time-input");
 
     var searchInput   = document.getElementById("search-input");
-    var searchBtn     = document.getElementById("search-btn");
+    var dfSearchBtn     = document.getElementById("traverse-df-search-btn");
+    var bfSearchBtn     = document.getElementById("traverse-bf-search-btn");
 
 
     eventUtil.addHandler(traverseDfBtn, "click", function() {
       tree.init();
-      
+      tree.traverseDF(rootObj);
       tree.animation( /^[1-9]+[0-9]*$/.test(timeInput.value.trim()) ? timeInput.value : 500 );
     });
 
     eventUtil.addHandler(traverseBfBtn, "click", function() {
       tree.init();
+      tree.traverseBF(rootObj);
+      tree.animation( /^[1-9]+[0-9]*$/.test(timeInput.value.trim()) ? timeInput.value : 500 );
     });
 
-    eventUtil.addHandler(searchBtn, "click", function() {
+    eventUtil.addHandler(dfSearchBtn, "click", function() {
+      tree.init();
+      tree.traverseDF(rootObj);
+      tree.animation( /^[1-9]+[0-9]*$/.test(timeInput.value.trim()) ? timeInput.value : 500, searchInput.value.trim() );
+    });
+
+    eventUtil.addHandler(bfSearchBtn, "click", function() {
+      tree.init();
+      tree.traverseBF(rootObj);
+      tree.animation( /^[1-9]+[0-9]*$/.test(timeInput.value.trim()) ? timeInput.value : 500, searchInput.value.trim() );
     });
 
   }
@@ -137,7 +154,38 @@
     addClass(obj, className);
   }
 
+  function findNode(obj) {
+    var className = "find-node";
+    addClass(obj, className);
+  }
+
+  function getNodeValue(node) {
+    var nodeValue = null;
+    if (node) {
+      var childs = node.childNodes;
+      for (var i = 0; i < childs.length; i++) {
+        var child = childs[i];
+        if (child.nodeName.toUpperCase() == "H1") {
+          return child.innerHTML;
+        }
+      }
+    }
+  }
+
   function finishCallbackFunc(stepList) {
+  }
+
+  function getChildNodes(root) {
+    if (root) {
+      var retChildNodes = [];
+      var childNodes = root.childNodes;
+      for (var i = 0; i < childNodes.length; i++) {
+        if (childNodes[i].nodeName.toUpperCase() == "DIV") {
+          retChildNodes.push(childNodes[i]);
+        }
+      }
+      return retChildNodes;
+    };
   }
 
   var tree = {
@@ -147,7 +195,68 @@
     }
   }
 
-  tree.animation = function(time) {
+  tree.traverseDF = function(root, find) {
+    var stepList = this.stepList;
+    var currentNode = root;
+    var childNodes = getChildNodes(currentNode);
+
+    for (var i = 0; i < childNodes.length; i++) {
+      this.traverseDF(childNodes[i]);
+    }
+
+    if (find) {
+      if (find == getNodeValue(childNodes[i])) {
+        childNodes[i].style.backgroundColor = "#ff0";
+      }
+    }
+    stepList.push(currentNode);
+  }
+
+  function Queue() {
+    this.data = [];
+  }
+
+  Queue.prototype.enQueue = function(value) {
+    this.data.push(value);
+  }
+
+  Queue.prototype.deQueue = function() {
+    var deQueueValue = null;
+    if (this.data.length > 0) {
+      //deQueueValue = this.data[0];
+      //this.data = this.data.slice(1);
+      this.data.reverse();
+      deQueueValue = this.data.pop();
+      this.data.reverse();
+    }
+    return deQueueValue;
+  }
+
+  tree.traverseBF = function(root, find) {
+    var queue = new Queue();
+    var stepList = this.stepList;
+    var currentNode = root;
+    var childNodes = [];
+
+    stepList.push(currentNode);
+
+    while (currentNode) {
+      childNodes = getChildNodes(currentNode);
+
+      for (var i = 0; i < childNodes.length; i++) {
+        if (find) {
+          if (find == getNodeValue(childNodes[i])) {
+            findNode(childNodes[i]);
+          }
+        }
+        stepList.push(childNodes[i]);
+        queue.enQueue(childNodes[i]);
+      }
+      currentNode = queue.deQueue();
+    }
+  }
+
+  tree.animation = function(time, find) {
     var showStep = this.stepList;
     var index = 0;
     var timer = setInterval(function(){
@@ -157,6 +266,11 @@
         return;
       } else {
         selectNode(showStep[index]);
+        if (find) {
+          if (find == getNodeValue(showStep[index])) {
+            showStep[index].style.backgroundColor = "#ff0";
+          }
+        }
         index++;
       }
     }, time)
