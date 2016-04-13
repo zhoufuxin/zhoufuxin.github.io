@@ -28,7 +28,7 @@
     }
 
     .root div {
-      height: 80%;
+      height: 45%;
     }
 
     h1 {
@@ -63,43 +63,41 @@
   </head>
 <body>
   <div id="root" class="root">
-    <div class="zero" >
-      <h1>zero1</h1>
-      <div class="one">
-        <h1>one1</h1>
-        <div class="two">
-          <h1>two1</h1>
-          <div class="three"><h1>three1</h1></div>
-          <div class="three"><h1>three2</h1></div>
-          <div class="three"><h1>three3</h1></div>
-          <div class="three"><h1>three4</h1></div>
-        </div>
-        <div class="two">
-          <h1>two2</h1>
-        </div>
-        <div class="two">
-          <h1>two3</h1>
-          <div class="three"><h1>three5</h1></div>
-          <div class="three"><h1>three6</h1></div>
-        </div>
+    <h1>root</h1>
+    <div class="one">
+      <h1>one1</h1>
+      <div class="two">
+        <h1>two1</h1>
+        <div class="three"><h1>three1</h1></div>
+        <div class="three"><h1>three2</h1></div>
+        <div class="three"><h1>three3</h1></div>
+        <div class="three"><h1>three4</h1></div>
       </div>
-      <div class="one">
-        <h1>one2</h1>
-        <div class="two">
-          <h1>two4</h1>
-          <div class="three"><h1>three7</h1></div>
-          <div class="three"><h1>three8</h1></div>
-          <div class="three"><h1>three9</h1></div>
-        </div>
-        <div class="two">
-          <h1>two5</h1>
-          <div class="three"><h1>three10</h1><div class="four"><h1>four1</h1></div></div>
-          <div class="three"><h1>three11</h1></div>
-        </div>
+      <div class="two">
+        <h1>two2</h1>
       </div>
-      <div class="one">
-        <h1>one3</h1>
+      <div class="two">
+        <h1>two3</h1>
+        <div class="three"><h1>three5</h1></div>
+        <div class="three"><h1>three6</h1></div>
       </div>
+    </div>
+    <div class="one">
+      <h1>one2</h1>
+      <div class="two">
+        <h1>two4</h1>
+        <div class="three"><h1>three7</h1></div>
+        <div class="three"><h1>three8</h1></div>
+        <div class="three"><h1>three9</h1></div>
+      </div>
+      <div class="two">
+        <h1>two5</h1>
+        <div class="three"><h1>three10</h1><div class="four"><h1>four1</h1></div></div>
+        <div class="three"><h1>three11</h1></div>
+      </div>
+    </div>
+    <div class="one">
+      <h1>one3</h1>
     </div>
   </div>
 
@@ -185,23 +183,17 @@
   }
 
   function addNode(parent, newNodeValue) {
-    if (parent) {
-      var newNode = document.createElement("div");
-      var newNodeTitle = document.createElement("h1");
-      newNodeTitle.innerHTML = newNodeValue;
-      newNode.appendChild(newNodeTitle);
+    var newNode = document.createElement("div");
+    var newNodeTitle = document.createElement("h1");
+    newNodeTitle.innerHTML = newNodeValue;
+    newNode.appendChild(newNodeTitle);
 
-      parent.appendChild(newNode);
-    }
+    parent.appendChild(newNode);
   }
 
   function removeNode(node) {
     if (node) {
-      if (node.className.indexOf("root") != -1) {
-        return;
-      } else {
-        node.remove();
-      }
+      node.remove();
     }
   }
 
