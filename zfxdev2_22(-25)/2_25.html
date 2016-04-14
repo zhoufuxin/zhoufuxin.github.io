@@ -1,0 +1,424 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>25</title>
+        <style>
+        html, body, div, ul, li {
+            padding: 0;
+            border: 0;
+
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+
+            list-style: none;
+        }
+
+        div {
+            margin: 5px;
+            padding: 1px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .root {
+            padding: 10px;
+        }
+
+        .root div {
+            cursor: pointer;
+            margin-left: 15px;
+        }
+
+        h1 {
+            font-size: 16px;
+            text-align: center;
+            line-height: 12px;
+            height: 12px;
+            display: inline-block;
+        }
+
+        div {
+            background-color: #fff;
+        }
+
+        .select-node {
+            background-color: red;
+        }
+
+        .find-node {
+            background-color: yellow;
+        }
+
+        .option {
+            padding: 10px;
+        }
+
+        .option button {
+            margin: 0 10px;
+        }
+
+        .menu-expand:before {
+            content: "";
+            display: inline-block;
+            margin-left: -15px;
+
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #000;
+        }
+
+        .menu-collapse:before {
+            content: "";
+            display: inline-block;
+            margin-left: -10px;
+
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid #000;
+        }
+
+        .menu-expand > div {
+            display: block;
+        }
+
+        .menu-collapse > div {
+            display: none;
+        }
+
+        </style>
+    </head>
+<body>
+<div class="option">
+    <label>单步时间</label><input id="time-input" type="text" value="300">
+    <button id="traverse-df-btn">深度优先</button>
+    <button id="traverse-bf-btn">广度优先</button>
+    <label>查找关键字</label><input id="search-input" type="text" value="three9">
+    <button id="traverse-df-search-btn">深度优先查询</button>
+    <button id="traverse-bf-search-btn">广度优先查询</button>    
+</div>
+
+<div class="option">
+    <label>新节点名称</label><input id="new-node-input" type="text" value="new">
+    <button id="add-btn">在选中的节点中插入新节点</button>
+    <button id="remove-btn">删除选中节点</button>
+</div>
+
+<div id="root" class="root menu-expand">
+    <h1>root</h1>
+    <div class="menu-expand">
+        <h1>one1</h1>
+        <div class="menu-expand">
+            <h1>two1</h1>
+            <div class=""><h1>three1</h1></div>
+            <div class=""><h1>three2</h1></div>
+            <div class=""><h1>three3</h1></div>
+            <div class=""><h1>three4</h1></div>
+        </div>
+        <div class="">
+            <h1>two2</h1>
+        </div>
+        <div class="menu-collapse">
+            <h1>two3</h1>
+            <div class=""><h1>three5</h1></div>
+            <div class=""><h1>three6</h1></div>
+        </div>
+    </div>
+    <div class="menu-collapse">
+        <h1>one2</h1>
+        <div class="menu-collapse">
+            <h1>two4</h1>
+            <div class=""><h1>three7</h1></div>
+            <div class=""><h1>three8</h1></div>
+            <div class=""><h1>three9</h1></div>
+        </div>
+        <div class="menu-collapse">
+            <h1>two5</h1>
+            <div class="menu-collapse"><h1>three10</h1><div class=""><h1>four1</h1></div></div>
+            <div class=""><h1>three11</h1></div>
+        </div>
+    </div>
+    <div class="">
+        <h1>one3</h1>
+    </div>
+</div>
+
+<script src="./js/event.js"></script>
+<script>
+window.onload = function() {
+
+    var rootObj       = document.getElementById("root");
+
+    var traverseDfBtn = document.getElementById("traverse-df-btn");
+    var traverseBfBtn = document.getElementById("traverse-bf-btn");
+
+    var timeInput     = document.getElementById("time-input");
+
+    var searchInput   = document.getElementById("search-input");
+    var dfSearchBtn   = document.getElementById("traverse-df-search-btn");
+    var bfSearchBtn   = document.getElementById("traverse-bf-search-btn");
+
+    var newNodeInput  = document.getElementById("new-node-input");
+    var addBtn        = document.getElementById("add-btn");
+    var removeBtn     = document.getElementById("remove-btn");
+
+    eventUtil.addHandler(traverseDfBtn, "click", function() {
+        tree.init();
+        tree.traverseDF(rootObj);
+        tree.animation( /^[1-9]+[0-9]*$/.test(timeInput.value.trim()) ? timeInput.value : 500 );
+    });
+
+    eventUtil.addHandler(traverseBfBtn, "click", function() {
+        tree.init();
+        tree.traverseBF(rootObj);
+        tree.animation( /^[1-9]+[0-9]*$/.test(timeInput.value.trim()) ? timeInput.value : 500 );
+    });
+
+    eventUtil.addHandler(dfSearchBtn, "click", function() {
+        tree.init();
+        var className = "find-node";
+        resetClass(className);
+        tree.traverseDF(rootObj, searchInput.value.trim());
+        //tree.traverseDF(rootObj);
+        //tree.animation( /^[1-9]+[0-9]*$/.test(timeInput.value.trim()) ? timeInput.value : 500, searchInput.value.trim() );
+    });
+
+    eventUtil.addHandler(bfSearchBtn, "click", function() {
+        tree.init();
+        var className = "find-node";
+        resetClass(className);
+        tree.traverseBF(rootObj, searchInput.value.trim());
+        //tree.traverseBF(rootObj);
+        //tree.animation( /^[1-9]+[0-9]*$/.test(timeInput.value.trim()) ? timeInput.value : 500, searchInput.value.trim() );
+    });
+
+    eventUtil.addHandler(rootObj, "click", function(e) {
+        var e = eventUtil.getEvent(e);
+        var targetEle = eventUtil.getElement(e);
+        if (targetEle.nodeName.toUpperCase() == "DIV") {
+            currentSelectNode = targetEle;
+        } else if (targetEle.parentNode && targetEle.parentNode.nodeName.toUpperCase() == "DIV") {
+            currentSelectNode = targetEle.parentNode;
+        }
+        selectNode(currentSelectNode);
+
+        /*
+        var childs = getChildNodes(currentSelectNode);
+        if (childs[0] && childs[0].className.indexOf("menu-expand") != -1) {
+            for (var i = 0 ; i < childs.length; i++) {
+                childs[i].className = childs[i].className.replace("menu-expand", "menu-collapse");
+            }
+        } else if (childs[0] && childs[0].className.indexOf("menu-collapse") != -1) {
+            for (var i = 0 ; i < childs.length; i++) {
+                childs[i].className = childs[i].className.replace("menu-collapse", "menu-expand");
+            }
+        }
+        */
+    });
+
+    eventUtil.addHandler(addBtn, "click", function() {
+        addNode(currentSelectNode, newNodeInput.value.trim());
+    });
+
+    eventUtil.addHandler(removeBtn, "click", function() {
+        removeNode(currentSelectNode);
+    });
+
+}
+
+function addNode(parent, newNodeValue) {
+    if (parent) {
+        var newNode = document.createElement("div");
+        var newNodeTitle = document.createElement("h1");
+        newNodeTitle.innerHTML = newNodeValue;
+        newNode.appendChild(newNodeTitle);
+
+        parent.appendChild(newNode);
+        parent.className = "menu-expand";
+    }
+}
+
+function removeNode(node) {
+    if (node) {
+        if (node.className.indexOf("root") != -1) {
+            return;
+        } else {
+            node.remove();
+        }
+    }
+}
+
+function menuExpand(obj) {
+    obj.className = obj.className.replace("menu-collapse", "menu-expand");
+}
+
+function menuCollapse(obj) {
+    obj.className = obj.className.replace("menu-expand", "menu-collapse");
+}
+
+var currentSelectNode = null;
+
+function resetClass(className) {
+    var nodes = document.getElementsByTagName("div");
+    for (var i = 0 ; i < nodes.length; i++) {
+        removeClass(nodes[i], className);
+    }
+}
+
+function selectNode(obj) {
+    var className = "select-node";
+    resetClass(className);
+    addClass(obj, className);
+
+    if (obj.className.indexOf("menu-expand") != -1) {
+        menuCollapse(obj);
+    } else if (obj.className.indexOf("menu-collapse") != -1) {
+        menuExpand(obj);
+    }
+}
+
+function findNode(obj) {
+    var className = "find-node";
+    addClass(obj, className);
+    
+    var parent = obj.parentNode;
+    while(parent) {
+        menuExpand(parent);
+        if (parent.className.indexOf("root") != -1) {
+            break;
+        }
+        parent = parent.parentNode;
+    }
+}
+
+function getNodeValue(node) {
+    var nodeValue = null;
+    if (node) {
+        var childs = node.childNodes;
+        for (var i = 0; i < childs.length; i++) {
+            var child = childs[i];
+            if (child.nodeName.toUpperCase() == "H1") {
+                return child.innerHTML;
+            }
+        }
+    }
+}
+
+function finishCallbackFunc(stepList) {
+}
+
+function getChildNodes(root) {
+    if (root) {
+        var retChildNodes = [];
+        var childNodes = root.childNodes;
+        for (var i = 0; i < childNodes.length; i++) {
+            if (childNodes[i].nodeName.toUpperCase() == "DIV") {
+                retChildNodes.push(childNodes[i]);
+            }
+        }
+        return retChildNodes;
+    };
+}
+
+var tree = {
+    stepList: [],
+    init: function() {
+        this.stepList = [];
+    }
+};
+
+tree.traverseDF = function(root, find) {
+    var stepList = this.stepList;
+    var currentNode = root;
+    var childNodes = getChildNodes(currentNode);
+
+    for (var i = 0; i < childNodes.length; i++) {
+        this.traverseDF(childNodes[i], find);
+    }
+
+    if (find && find == getNodeValue(currentNode)) {
+        //childNodes[i].style.backgroundColor = "#ff0";
+        findNode(currentNode);
+    }
+    stepList.push(currentNode);
+};
+
+tree.traverseBF = function(root, find) {
+    var queue = new Queue();
+    var stepList = this.stepList;
+    var currentNode = root;
+    var childNodes = [];
+
+    stepList.push(currentNode);
+
+    while (currentNode) {
+        childNodes = getChildNodes(currentNode);
+
+        for (var i = 0; i < childNodes.length; i++) {
+            if (find && find == getNodeValue(childNodes[i])) {
+                findNode(childNodes[i]);
+            }
+            stepList.push(childNodes[i]);
+            queue.enQueue(childNodes[i]);
+        }
+        currentNode = queue.deQueue();
+    }
+};
+
+function Queue() {
+    this.data = [];
+}
+
+Queue.prototype.enQueue = function(value) {
+    this.data.push(value);
+};
+
+Queue.prototype.deQueue = function() {
+    var deQueueValue = null;
+    if (this.data.length > 0) {
+        //deQueueValue = this.data[0];
+        //this.data = this.data.slice(1);
+        this.data.reverse();
+        deQueueValue = this.data.pop();
+        this.data.reverse();
+    }
+    return deQueueValue;
+};
+
+tree.animation = function(time, find) {
+    var showStep = this.stepList;
+    var index = 0;
+    var timer = setInterval(function(){
+        if (index >= showStep.length) {
+            clearInterval(timer);
+            console.log(showStep);
+            return;
+        } else {
+            selectNode(showStep[index]);
+            if (find) {
+                if (find == getNodeValue(showStep[index])) {
+                    showStep[index].style.backgroundColor = "#ff0";
+                }
+            }
+            index++;
+        }
+    }, time)
+};
+
+function addClass(obj, className) {
+
+    if (obj) {
+        obj.className += " " + className;
+    }
+}
+
+function removeClass(obj, className) {
+
+    if (obj && obj.className) {
+        obj.className = obj.className.replace(className, "");
+        obj.className = obj.className.trim();
+    }
+}
+</script>
+</body>
+</html>
