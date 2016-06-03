@@ -12,7 +12,7 @@ html, body, header, nav, .first-page, .module-one, .module-two, .article-show-on
 }
 
 html, body {
-  font-size: 62.5%; 
+  font-size: 625%; 
   background-color: #f5f5f5;
   font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
   -webkit-text-size-adjust: none;
@@ -20,82 +20,82 @@ html, body {
 
 @media only screen and (max-width: 1920px), only screen and (max-device-width:1920px) {
   html,body {
-    font-size: 120%;
+    font-size: 1200%;
   }
 }
 @media only screen and (max-width: 1280px), only screen and (max-device-width:1280px) {
   html,body {
-    font-size: 80%;
+    font-size: 800%;
   }
 }
 @media only screen and (max-width: 1080px), only screen and (max-device-width:1080px) {
   html,body {
-    font-size: 62.5%;
+    font-size: 625%;
   }
 }
 @media only screen and (max-width: 960px), only screen and (max-device-width:960px) {
   html,body {
-    font-size: 60%;
+    font-size: 600%;
   }
 }
 @media only screen and (max-width: 800px), only screen and (max-device-width:800px) {
   html,body {
-    font-size: 50%;
+    font-size: 500%;
   }
 }
 @media only screen and (max-width: 720px), only screen and (max-device-width:720px) {
   html,body {
-    font-size: 45%;
+    font-size: 450%;
   }
 }
 @media only screen and (max-width: 640px), only screen and (max-device-width:640px) {
   html,body {
-    font-size: 40%;
+    font-size: 400%;
   }
 }
 @media only screen and (max-width: 600px), only screen and (max-device-width:600px) {
   html,body {
-    font-size: 37.5%;
+    font-size: 375%;
   }
 }
 @media only screen and (max-width: 540px), only screen and (max-device-width:540px) {
   html,body {
-    font-size: 33.75%;
+    font-size: 337.5%;
   }
 }
 @media only screen and (max-width: 480px), only screen and (max-device-width:480px) {
   html,body {
-    font-size: 30%;
+    font-size: 300%;
   }
 }
 @media only screen and (max-width: 414px), only screen and (max-device-width:414px) {
   html,body {
-    font-size: 25.875%;
+    font-size: 258.75%;
   }
 }
 @media only screen and (max-width: 400px), only screen and (max-device-width:400px) {
   html,body {
-    font-size: 25%;
+    font-size: 250%;
   }
 }
 @media only screen and (max-width: 375px), only screen and (max-device-width:375px) {
   html,body {
-    font-size: 23.4375%;
+    font-size: 234.375%;
   }
 }
 @media only screen and (max-width: 360px), only screen and (max-device-width:360px) {
   html,body {
-    font-size: 22.5%;
+    font-size: 225%;
   }
 }
 @media only screen and (max-width: 320px), only screen and (max-device-width:320px) {
   html,body {
-    font-size: 20%;
+    font-size: 200%;
   }
 }
 @media only screen and (max-width: 240px), only screen and (max-device-width:240px) {
   html,body {
-    font-size: 15%;
+    font-size: 150%;
   }
 }
 
@@ -119,8 +119,8 @@ img {
 
 header {
   width: 100%;
-  height: 11.4rem;
-  line-height: 11.4rem;
+  height: 1.14rem;
+  line-height: 1.14rem;
   background-color: #91d4da;
   position: relative;
   color: #fcfbff;
@@ -130,36 +130,40 @@ header {
 .page-back {
   position: absolute;
   display: block;
-  font-size: 3.3rem;
-  margin-left: 3rem;
+  font-size: .33rem;
+  margin-left: .3rem;
   color: #fcfbff;
   top: 0;
 }
 
 .page-back i {
   line-height: 0;
-  font-size: 4.4rem;
+  font-size: .44rem;
   font-style: normal;
   position: relative;
-  top: 0.3rem;
+  top: .03rem;
 }
 
 header h1 {
-  font-size: 4.4rem;
+  font-size: .44rem;
+}
+
+nav {
+  height: 1.16rem;
+  line-height: 1.16rem;
+  font-size: .3rem;
 }
 
 nav a {
   display: inline-block;
   width: 20%;
-  font-size: 3rem;
   color: #000;
-  line-height: 11.6rem;
-  height: 11.6rem;
+  height: 1.16rem;
   text-align: center;
 }
 
 nav .selected {
-  border-bottom: 0.8rem solid #90d3d9;
+  border-bottom: 0.08rem solid #90d3d9;
 }
 
 .first-page .title img {
@@ -184,10 +188,10 @@ nav .selected {
 
 .first-page .tag figcaption {
   text-align: center;
-  font-size: 4rem;
+  font-size: .4rem;
   width: 100%;
-  height: 13.2rem;
-  line-height: 13.2rem;
+  height: 1.32rem;
+  line-height: 1.32rem;
 }
 
 .first-page .subfield {
@@ -197,7 +201,7 @@ nav .selected {
 .first-page .subfield dl {
   float: left;
   width: 33.33333%;
-  border-right: 0.4rem solid #dedede;
+  border-right: 0.04rem solid #dedede;
   text-align: center;
 }
 
@@ -206,15 +210,15 @@ nav .selected {
 }
 
 .first-page .subfield dl dd h3 {
-  height: 7rem;
-  line-height: 7rem;
-  font-size: 4.4rem;
+  height: .7rem;
+  line-height: .7rem;
+  font-size: .44rem;
 }
 
 .first-page .subfield dl dd h4 {
-  height: 6.5rem;
-  line-height: 6.5rem;
-  font-size: 4rem;
+  height: .65rem;
+  line-height: .65rem;
+  font-size: .4rem;
   color: #8a8a8a;
 }
 
@@ -226,11 +230,11 @@ nav .selected {
 
 .module h2 {
   width: 100%;
-  height: 12rem;
-  line-height: 12rem;
-  font-size: 6rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  font-size: .6rem;
   color: #626262;
-  border-bottom: 0.3rem solid #dedede;
+  border-bottom: 0.03rem solid #dedede;
   margin-bottom: 2.0%;
 }
 
@@ -249,17 +253,17 @@ nav .selected {
 }
 
 .module dl dt img {
-  border: 0.3rem solid #feb834;
+  border: 0.03rem solid #feb834;
 }
 
 .module dl dd {
   width: 34.5%;
   margin-top: 2%;
   margin-left: 2.5%;
-  height: 10rem;
-  line-height: 10rem;
+  height: 1rem;
+  line-height: 1rem;
   text-align: center;
-  font-size: 4rem;
+  font-size: .4rem;
   background-color: #f8f8f8;
   color: #4d4d4d;
 }
@@ -286,16 +290,19 @@ nav .selected {
 .article-show-one dl dd {
   width: 70%;
   padding-left: 2.6%;
+  font-size: .26rem;
+  line-height: .48rem;
 }
 
 .article-show-one dl dd h2 {
-  font-size: 4.8rem;
-  height: 16rem;
+  height: 1.2rem;
+  line-height: .48rem;
   color: #6c6c6c;
 }
 
 .article-show-one dl dd em, .article-show-one dl dd time, .article-show-two em, .article-show-two time {
-  font-size: 2.6rem;
+  display: inline-block;
+  font-size: .26rem;
   font-style: normal;
   color: #c5c5c5;
   padding-right: 2%;
@@ -303,12 +310,14 @@ nav .selected {
 
 .article-show-two {
   padding:0 3%;
+  font-size: .48rem;
+  line-height: .92rem;
 }
 
 .article-show-two h2 {
-  font-size: 4.8rem;
-  min-height: 9.2rem;
-  line-height: 9.2rem;
+  font-size: .48rem;
+  min-height: .92rem;
+  line-height: .92rem;
   color: #6c6c6c;
 }
 
