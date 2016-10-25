@@ -195,8 +195,10 @@
     win.CusScrollBar = CusScrollBar;
 })(window, document, jQuery);
 
-var tabScrollBar = new CusScrollBar({
-    contSelector   : ".box-group .content",
-    barSelector    : ".box-group .scroll-bar",
-    sliderSelector : ".box-group .scroll-slider",
-});
+window.onload = function() {
+    var tabScrollBar = new CusScrollBar({
+        contSelector   : ".box-group .content",
+        barSelector    : ".box-group .scroll-bar",
+        sliderSelector : ".box-group .scroll-slider",
+    });
+};
